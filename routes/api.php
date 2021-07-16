@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('find-order', 'HomePageController@findOrder');
 Route::get('get-paket', 'HomePageController@getPaket');
+Route::get('get-paket/{id}', 'HomePageController@showDetailPaket');
