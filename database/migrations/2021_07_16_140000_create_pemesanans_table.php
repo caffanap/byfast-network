@@ -19,6 +19,7 @@ class CreatePemesanansTable extends Migration
             $table->foreign('pakets_id')->references('id')->on('pakets')->onDelete('cascade');
             $table->foreignId('topping_pakets_id');
             $table->foreign('topping_pakets_id')->references('id')->on('topping_pakets')->onDelete('cascade');
+            $table->string('no_pemesanan');
             $table->integer('total_harga');
             $table->string('nama_lengkap');
             $table->string('nomor_identitas');
