@@ -17,8 +17,15 @@ class HomePageController extends Controller
 
     public function findOrder(Pemesanan $pemesanan, Request $request)
     {
-        $data = $pemesanan->where(['no_pemesanan' => $request->no_pemesanan])->get();
-        if ($data) {
+        if (!$request->no_pemesanan) {
+            return response([
+                'status' => false,
+                'message' => 'Nomor Pemesanan wajib diisi'
+            ], 401);
+        }
+
+        $data = $pemesanan->where('no_pemesanan', $request->no_pemesanan)->get();
+        if (count($data) > 0) {
             return response([
                 'status' => true,
                 'message' => 'Data Ditemukan!',
