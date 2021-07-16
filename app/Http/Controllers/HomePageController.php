@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\KategoriPaket;
 use App\Newsletter;
+use App\Paket;
 use App\Pemesanan;
 use App\Subscriber;
+use App\ToppingPaket;
 use Illuminate\Http\Request;
 
 class HomePageController extends Controller
@@ -48,6 +50,27 @@ class HomePageController extends Controller
             'message' => 'Berhasil Menampilkan Kategori Paket Beserta Paketnya!',
             'data' => $data
         ], 200);
+    }
+
+    public function showDetailPaket(Paket $paket, ToppingPaket $toppingPaket, $id)
+    {
+        $paket = $paket->find($id)->with('kategori')->get();
+        $topping = $toppingPaket->all();
+        if ($paket) {
+            return response([
+                'status' => true,
+                'message' => 'Berhasil Menampilkan Paket Beserta Kategorinya!',
+                'data' => [
+                    'paket' => $paket,
+                    'topping' => $topping
+                ]
+            ], 200);
+        }else{
+            return response([
+                'status' => false,
+                'message' => 'Gagal Menampilkan Paket Beserta Kategorinya!',
+            ], 401);
+        }
     }
 
     public function store(Request $request, Subscriber $subscriber)
