@@ -25,6 +25,7 @@ class CreatePemesanansTable extends Migration
             $table->text('alamat')->nullable();
             $table->enum('status_pemesanan', ['pending', 'proses', 'done'])->default('pending');
             $table->timestamps();
+            
         });
     }
 
