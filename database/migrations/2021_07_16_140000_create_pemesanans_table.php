@@ -15,16 +15,20 @@ class CreatePemesanansTable extends Migration
     {
         Schema::create('pemesanans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('users_id');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('pakets_id');
             $table->foreign('pakets_id')->references('id')->on('pakets')->onDelete('cascade');
             $table->foreignId('topping_pakets_id');
             $table->foreign('topping_pakets_id')->references('id')->on('topping_pakets')->onDelete('cascade');
+            $table->string('no_pemesanan');
             $table->integer('total_harga');
+            $table->string('nama_lengkap');
+            $table->string('nomor_identitas');
+            $table->string('no_hp')->nullable();
+            $table->enum('jenkel', ['Laki-Laki', 'Perempuan'])->nullable();
             $table->text('alamat')->nullable();
             $table->enum('status_pemesanan', ['pending', 'proses', 'done'])->default('pending');
             $table->timestamps();
+            
         });
     }
 
