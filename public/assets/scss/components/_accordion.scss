@@ -1,0 +1,153 @@
+// dlab-accordion
+.dlab-accordion{
+	.card{
+		box-shadow: 1px 0px 60px 0 rgba(0, 0, 0, 0.08);
+		border-radius: $border-radius;
+		overflow: hidden;
+		margin-bottom: 20px;
+	}
+	.card-body{
+		padding: 25px 30px;
+		border-radius: 0;
+	}
+	.card-header{
+		padding: 0;
+		border: 0;
+		.dlab-title{
+			margin: 0;
+			width: 100%;
+			font-size: 18px;
+			
+			a{
+				width: 100%;
+				border-radius: $border-radius;
+				padding: 22px 65px 22px 30px;
+				transition: all 0.5s;
+				background-size: 200%;
+				color: $white;
+				display: block;
+				position: relative;
+				box-shadow: 5px 0 15px var(--rgba-primary-4);
+				z-index:1;
+				overflow:hidden;
+				&:after{
+					content: "";
+					position:absolute;
+					z-index:-1;
+					background-image:var(--gradient);
+					background-size:200%;
+					@include transitionMedium;
+					width:100%;
+					height:100%;
+					left:0;
+					top:0;
+					opacity:1;
+				}
+				.toggle-close{
+					background-color: $white;
+					font-family: themify;
+					height: 55px;
+					width: 55px;
+					display: block;
+					position: absolute;
+					right: 5px;
+					top: 5px;
+					border-radius: $border-radius;
+					line-height: 57px;
+					text-align: center;
+					font-size: 24px;
+					@include transitionMedium;
+					z-index:1;
+					overflow:hidden;
+					
+					&:after{
+						content: "";
+						position:absolute;
+						z-index:-1;
+						background-image:var(--gradient);
+						background-size:200%;
+						@include transitionMedium;
+						width:100%;
+						height:100%;
+						left:0;
+						top:0;
+						opacity:0;
+					}
+					
+					&:before{
+						content: "\e61a";
+						color: var(--primary);
+						font-size: 24px;
+						font-family: 'themify';
+						z-index: 99;
+						opacity: 1;
+						transform: rotate(45deg);
+						transition: all 0.5s;
+						line-height: 55px;
+						display:block;
+					}
+				}
+				
+				&.collapsed{
+					background: $white;
+					color: inherit;
+					&:after{
+						opacity:0;
+					}
+					.toggle-close{
+						content: "";
+						&:after{
+							opacity:1;
+						}
+						&:before{
+							opacity: 1;
+							transform: rotate(0);
+							color:$white;
+						}
+					}
+					
+				}
+			}
+		}
+		@include respond('phone'){
+			.dlab-title{
+				a{
+					padding: 15px 65px 15px 15px;
+				}
+			}
+		}
+	}
+	&.accordion-sm{
+		.card-body {
+			padding: 18px 20px;
+		}
+		.card-header{
+			.dlab-title{
+				a{
+					padding: 15px 55px 15px 20px;
+					&:after{
+						height: 40px;
+						width: 40px;
+						right: 5px;
+						top: 5px;
+						line-height: 40px;
+						font-size: 16px;
+						background-color: #fff;
+					}
+					&:before{
+						right: 17px;
+						top: 16px;
+						font-size: 16px;
+					}
+				}
+			}
+			@include respond('phone'){
+				.dlab-title{
+					a{
+						padding: 15px 65px 15px 15px;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,31 @@
+.site-footer{
+	&.style-1{
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		background-color: var(--primary);
+		.footer-top{
+			background: transparent;
+			.widget_services ul{
+				margin-top: -5px;
+			}
+		}
+		
+		@include respond('tab-land'){
+			.footer-top{
+				.widget_services{
+					padding-left: 0;
+				}
+			}
+		}
+		.footer-title:before, 
+		.footer-title:after{
+			background:#fff;	
+		}
+		.copyright-text a{
+			color:#fff;
+		}
+		
+	}
+	
+}

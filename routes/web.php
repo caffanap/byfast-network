@@ -13,6 +13,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomePageController@index');
+Route::get('/about', 'AboutPageController@index');
+Route::get('/services', 'ServicePageController@index');
+Route::get('/faq', 'FaqPageController@index');
+
+Route::post('/subscriber/store', 'HomePageController@store');
+Route::post('/newsletter', 'HomePageController@newsleter');
+
+Route::redirect('login', 'auth/login');
+Route::redirect('admin', 'auth/login');
+
+Route::prefix('auth')->group(function () {
+    Route::get('login', 'AuthController@index')->name('login');
+    Route::post('login', 'AuthController@login');
+    Route::get('logout', 'AuthController@logout');
+});
+
+Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::redirect('dashboard', 'subscriber');
+
+    // Route::get('dashboard', 'Admin\DashboardController@index');
+    Route::get('subscriber', 'Admin\SubscriberController@index');
+    Route::get('newsletter', 'Admin\NewsletterController@index');
 });

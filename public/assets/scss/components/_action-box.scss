@@ -1,0 +1,12 @@
+// action box
+.action-box{
+	&.style-1{
+	
+		    padding: 40px 0;
+		@include respond('phone-land'){
+			.text-right{
+				text-align: left!important;
+			}
+		}
+	}
+}
