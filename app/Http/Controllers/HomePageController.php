@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Newsletter;
+use App\Pemesanan;
 use App\Subscriber;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,23 @@ class HomePageController extends Controller
     public function index()
     {
         return view('pages/home');
+    }
+
+    public function findOrder(Pemesanan $pemesanan, Request $request)
+    {
+        $data = $pemesanan->where(['no_pemesanan' => $request->no_pemesanan])->get();
+        if ($data) {
+            return response([
+                'status' => true,
+                'message' => 'Data Ditemukan!',
+                'data' => $data
+            ], 200);
+        }else{
+            return response([
+                'status' => false,
+                'message' => 'Nomor Pemesanan Tidak Ditemukan!'
+            ], 401);
+        }
     }
 
     public function store(Request $request, Subscriber $subscriber)
