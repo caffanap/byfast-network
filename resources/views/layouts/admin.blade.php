@@ -44,7 +44,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{ url('admin/dashboard') }}" class="brand-link text-center">
-                <span class="brand-text font-weight-light">Admin Get Well Mom</span>
+                <span class="brand-text font-weight-light">ByFast Network</span>
             </a>
 
             <!-- Sidebar -->
@@ -173,8 +173,7 @@
     <script src="{{ asset('assets/adminlte') }}/plugins/moment/moment.min.js"></script>
     <script src="{{ asset('assets/adminlte') }}/plugins/daterangepicker/daterangepicker.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->
-    <script
-        src="{{ asset('assets/adminlte') }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js">
+    <script src="{{ asset('assets/adminlte') }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js">
     </script>
     <!-- Summernote -->
     <script src="{{ asset('assets/adminlte') }}/plugins/summernote/summernote-bs4.min.js"></script>
