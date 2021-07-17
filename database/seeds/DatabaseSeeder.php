@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use Database\Seeders\AdminSeeder;
+use Database\Seeders\KategoriPaketSeeder;
+use Database\Seeders\PaketSeeder;
+use Database\Seeders\ToppingPaketSeeder;
 
 class DatabaseSeeder extends Seeder
 {
