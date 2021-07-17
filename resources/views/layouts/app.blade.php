@@ -80,9 +80,12 @@
             visibility: visible;
             opacity: 1;
         }
-
     </style>
-
+    <script src="{{ asset('assets') }}/js/jquery.min.js"></script>
+    <script>
+        var baseUrl = window.location.origin;
+        var apiUrl = `${baseUrl}/api`;
+    </script>
 </head>
 
 <body id="bg">
@@ -114,8 +117,7 @@
                         </div>
                         <div class="header-nav navbar-collapse collapse justify-content-end" id="navbarNavDropdown">
                             <div class="logo-header">
-                                <a href="index.html"><img
-                                        src="{{ asset('assets') }}/images/logo-2.png" alt=""></a>
+                                <a href="index.html"><img src="{{ asset('assets') }}/images/logo-2.png" alt=""></a>
                             </div>
                             <ul class="nav navbar-nav navbar">
                                 <li class="active">
@@ -183,8 +185,8 @@
                         <div class="col-sm-3 wow fadeIn" data-wow-duration="2s" data-wow-delay="0.2s">
                             <div class="widget widget_about">
                                 <div class="footer-logo">
-                                    <a href="index.html"><img
-                                            src="{{ asset('assets') }}/images/logo-2.png" alt="" /></a>
+                                    <a href="index.html"><img src="{{ asset('assets') }}/images/logo-2.png"
+                                            alt="" /></a>
                                 </div>
                                 <div class="widget widget_getintuch">
                                     <ul>
@@ -249,13 +251,11 @@
         <div class="label-text">WhatsApp</div>
     </div>
     @if (Session::has('error'))
-        <script>
-            alert({{ Session::get('error') }})
-        </script>
+    <script>
+        alert({{ Session::get('error') }})
+    </script>
     @endif
     <!-- JAVASCRIPT FILES ========================================= -->
-    <script src="{{ asset('assets') }}/js/jquery.min.js"></script>
-    <!-- JQUERY.MIN JS -->
     <script src="{{ asset('assets') }}/vendor/wow/wow.js"></script>
     <!-- WOW JS -->
     <script src="{{ asset('assets') }}/vendor/bootstrap/js/popper.min.js"></script>

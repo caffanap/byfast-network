@@ -486,4 +486,5 @@ cover;" width="800" height="517">
         </div>
     </div>
 </div>
+<script src="{{ asset('services') }}/home.js"></script>
 @endsection
