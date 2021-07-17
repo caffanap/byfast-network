@@ -124,10 +124,13 @@
                                     <a href="/"><span>Home</span></a>
                                 </li>
                                 <li>
-                                    <a href="/about"><span>About</span></a>
+                                    <a href="{{ route('about') }}"><span>About</span></a>
                                 </li>
                                 <li>
-                                    <a href="/services"><span>Services</span></a>
+                                    <a href="{{ route('layanan') }}"><span>Layanan</span></a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('cekStatusPemesanan') }}"><span>Cek Status Pemesanan</span></a>
                                 </li>
                             </ul>
                             <div class="dlab-social-icon">
@@ -151,12 +154,12 @@
         </div>
 
         <!-- Footer -->
-        <footer class="site-footer style-2" id="footer" style="background-image: url(images/background/bg4.png);">
+        <footer class="site-footer style-2" id="footer">
             <div class="container">
                 <div class="dlab-subscribe style-1 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
                     <div class="row align-items-center">
                         <div class="col-lg-6">
-                            <h2 class="title">Subscribe To Our Newsletter</h2>
+                            <h2 class="title">Berlanggan ke newsletter kami!</h2>
                         </div>
                         <div class="col-lg-6">
                             <form action="{{ url('/newsletter') }}" method="post">
@@ -165,7 +168,7 @@
                                 <div class="form-group">
                                     <div class="input-group shadow">
                                         <input name="email" required="required" type="email" class="form-control"
-                                            placeholder="Your Email Address">
+                                            placeholder="Alamat emailmu">
                                         <div class="input-group-addon">
                                             <button name="submit" value="Submit" type="submit"
                                                 class="btn btn-primary gradient">
@@ -192,11 +195,11 @@
                                     <ul>
                                         <li>
                                             <i class="fa fa-phone gradient"></i>
-                                            <span>0812 6860 3378</span>
+                                            <span>0812 2342 6543</span>
                                         </li>
                                         <li>
                                             <i class="fa fa-envelope gradient"></i>
-                                            <span>halo@getwellmom.com</span>
+                                            <span>customercare@byfast.net</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -225,13 +228,13 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-md-7 text-left">
-                            <span class="copyright-text">Copyright © 2021 GetWellMom. All rights reserved.</span>
+                            <span class="copyright-text">Copyright © 2021 ByFast Net. All rights reserved.</span>
                         </div>
                         <div class="col-lg-6 col-md-5 text-right">
                             <div class="dlab-social-icon">
                                 <ul>
                                     <li><a class="fa fa-facebook" href="javascript:void(0);"></a></li>
-                                    <li><a class="fa fa-instagram" href="https://www.instagram.com/getwellmom/"></a>
+                                    <li><a class="fa fa-instagram" href="javascript:void(0);"></a>
                                     </li>
                                     <li><a class="fa fa-twitter" href="javascript:void(0);"></a></li>
                                 </ul>
