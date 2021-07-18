@@ -19,6 +19,7 @@ Route::get('/', 'HomePageController@index')->name('home');
 Route::get('/about', 'AboutPageController@index')->name('about');
 Route::get('/layanan', 'ServicePageController@index')->name('layanan');
 Route::get('/cek-status-pemesanan', 'CheckOrderStatusPageController@index')->name('cekStatusPemesanan');
+Route::get('/paket/{id}', 'PaketController@show');
 Route::get('/faq', 'FaqPageController@index');
 
 Route::post('/subscriber/store', 'HomePageController@store');
@@ -44,4 +45,7 @@ Route::prefix('admin')->middleware('auth')->as('admin.')->group(function () {
     Route::resource('kategori-paket', 'Admin\KategoriPaketController');
     Route::resource('paket', 'Admin\PaketController');
     Route::resource('topping', 'Admin\ToppingController');
+    
+    
+    Route::get('pemesanan', 'PemesananController@index');
 });
