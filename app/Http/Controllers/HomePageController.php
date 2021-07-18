@@ -44,7 +44,7 @@ class HomePageController extends Controller
 
     public function getPaket(KategoriPaket $kategoriPaket)
     {
-        $data = $kategoriPaket->with('paket')->get();
+        $data = $kategoriPaket->with('pakets')->get();
         return response([
             'status' => true,
             'message' => 'Berhasil Menampilkan Kategori Paket Beserta Paketnya!',
@@ -54,12 +54,13 @@ class HomePageController extends Controller
 
     public function showDetailPaket(Paket $paket, ToppingPaket $toppingPaket, $id)
     {
-        $paket = $paket->find($id)->with('kategori')->get();
+        $paket = $paket->with('kategori')->find($id);
         $topping = $toppingPaket->all();
         if ($paket) {
             return response([
                 'status' => true,
-                'message' => 'Berhasil Menampilkan Paket Beserta Kategorinya!',
+                'id' => $id,
+                'message' => 'Berhasil Menampilkan Paket Beserta Topping!',
                 'data' => [
                     'paket' => $paket,
                     'topping' => $topping
@@ -68,7 +69,7 @@ class HomePageController extends Controller
         }else{
             return response([
                 'status' => false,
-                'message' => 'Gagal Menampilkan Paket Beserta Kategorinya!',
+                'message' => 'Gagal Menampilkan Paket Beserta Topping!',
             ], 401);
         }
     }

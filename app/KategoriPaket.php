@@ -8,9 +8,9 @@ class KategoriPaket extends Model
 {
     protected $fillable = ['name', 'desc'];
     //
-    public function paket()
+    public function pakets()
     {
-        return $this->hasMany(Paket::class);
+        return $this->hasMany(Paket::class, 'kategori_pakets_id');
     }
 
 }
