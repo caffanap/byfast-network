@@ -252,7 +252,7 @@
     </div>
     @if (Session::has('error'))
     <script>
-        alert({{ Session::get('error') }})
+        alert("{{ Session::get('error') }}")
     </script>
     @endif
     <!-- JAVASCRIPT FILES ========================================= -->
