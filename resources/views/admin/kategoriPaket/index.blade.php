@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -250,11 +251,17 @@
                 },
                 {
                     data: "created_at",
-                    name: "created_at"
+                    name: "created_at",
+                    render: (data) => {
+                        return new Date(data).toISOString().slice(0, 19).replace('T', ' ')
+                    }
                 },
                 {
                     data: "updated_at",
-                    name: "updated_at"
+                    name: "updated_at",
+                    render: (data) => {
+                        return new Date(data).toISOString().slice(0, 19).replace('T', ' ')
+                    }
                 },
                 {
                     data: "action",

@@ -3,6 +3,8 @@
 @section('title', 'About')
 
 @section('content')
+{{ $about->desc1 }} 
+{{-- Output  --}}
 <div class="page-content bg-white">
     <!-- Banner  -->
     <div class="dlab-bnr-inr overlay-gradient-dark text-center" style="background-image: url(images/banner/bnr2.jpg);">

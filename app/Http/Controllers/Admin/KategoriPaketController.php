@@ -14,12 +14,12 @@ class KategoriPaketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, KategoriPaket $kategoriPaket)
     {
-        // $kategoriPakets = KategoriPaket::all();
-        $kategoriPakets = DB::table('kategori_pakets')->select('id', 'name', 'desc', 
-        DB::raw('DATE_FORMAT(created_at, "%d %M %Y") as created_at'), 
-        DB::raw('DATE_FORMAT(updated_at, "%d %M %Y") as updated_at'));
+        $kategoriPakets = $kategoriPaket::all();
+        // $kategoriPakets = DB::table('kategori_pakets')->select('id', 'name', 'desc', 
+        // DB::raw('DATE_FORMAT(created_at, "%d %M %Y") as created_at'), 
+        // DB::raw('DATE_FORMAT(updated_at, "%d %M %Y") as updated_at'));
 
         if ($request->ajax()) {
             return datatables()->of($kategoriPakets)
