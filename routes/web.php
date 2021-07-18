@@ -44,4 +44,7 @@ Route::prefix('admin')->middleware('auth')->as('admin.')->group(function () {
     Route::resource('kategori-paket', 'Admin\KategoriPaketController');
     Route::resource('paket', 'Admin\PaketController');
     Route::resource('topping', 'Admin\ToppingController');
+    
+    
+    Route::get('pemesanan', 'PemesananController@index');
 });
