@@ -35,7 +35,7 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::prefix('admin')->middleware('auth')->as('admin.')->group(function () {
-    Route::redirect('dashboard', 'subscriber')->name('dashboard');
+    Route::redirect('dashboard', 'paket')->name('paket');
 
     // Route::get('dashboard', 'Admin\DashboardController@index');
     // Route::get('subscriber', 'Admin\SubscriberController@index');

@@ -18,6 +18,35 @@ class HomePageController extends Controller
         return view('pages/home');
     }
 
+    public function order(Pemesanan $pemesanan, Request $request)
+    {
+        $no_pemesanan = "BFN-" . time();
+        $data = $pemesanan;
+        $data->no_pemesanan = $no_pemesanan;
+        $data->pakets_id = $request->pakets_id;
+        $data->topping_pakets_id = $request->topping_pakets_id;
+        $data->nama_lengkap = $request->nama_lengkap;
+        $data->nomor_identitas = $request->nomor_identitas;
+        $data->no_hp = $request->no_hp;
+        $data->jenkel = $request->jenkel;
+        $data->alamat = $request->alamat;
+        $data->total_harga = $request->total_harga;
+        $response = $data->save();
+
+        if ($response) {
+            return response([
+                'status' => true,
+                'message' => 'Berhasil Mengirim Pengajuan!',
+                'data' => $data
+            ], 201);
+        } else {
+            return response([
+                'status' => false,
+                'message' => 'Gagal Mengirim Pengajuan!',
+            ], 401);
+        }
+    }
+
     public function findOrder(Pemesanan $pemesanan, Request $request)
     {
         if (!$request->no_pemesanan) {
@@ -27,8 +56,16 @@ class HomePageController extends Controller
             ], 401);
         }
 
-        $data = $pemesanan->where('no_pemesanan', $request->no_pemesanan)->get();
+        $data = $pemesanan->with('pakets', 'topping_pakets')->where('no_pemesanan', $request->no_pemesanan)->get();
         if (count($data) > 0) {
+            if ($data[0]['status_pemesanan'] == 'pending') {
+                $data[0]['status_pemesanan'] = "Pemesanan anda sedang diajukan dan sedang menunggu konfirmasi";
+            }elseif ($data[0]['status_pemesanan'] == 'proses') {
+                $data[0]['status_pemesanan'] = "Pemesanan anda telah dikonfirmasi dan akan segera diproses pemesangannya";
+            }elseif ($data[0]['status_pemesanan'] == 'done') {
+                $data[0]['status_pemesanan'] = "Pemesanan anda telah terinstall di alamat anda";
+            }
+            $data[0]['total_harga'] = "Rp " . number_format($data[0]['total_harga'],0,',','.');
             return response([
                 'status' => true,
                 'message' => 'Data Ditemukan!',
@@ -66,7 +103,7 @@ class HomePageController extends Controller
                     'topping' => $topping
                 ]
             ], 200);
-        }else{
+        } else {
             return response([
                 'status' => false,
                 'message' => 'Gagal Menampilkan Paket Beserta Topping!',
