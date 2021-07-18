@@ -36,7 +36,6 @@
                                 <div class="col-sm-12">
                                     <input type="text" class="form-control" id="name" name="name" value="" required>
                                 </div>
-                                <span class="text-danger" id="nameError"></span>
                             </div>
 
                             <div class="form-group">
@@ -44,17 +43,13 @@
                                 <div class="col-sm-12">
                                     <textarea class="form-control" name="desc" id="desc" required></textarea>
                                 </div>
-                                <span class="text-danger" id="descError"></span>
-
                             </div>
 
                             <div class="form-group">
                                 <label for="name" class="col-sm-12 control-label">Harga</label>
                                 <div class="col-sm-12">
-                                    <input type="number" class="form-control" id="harga" name="harga" value="" required>
+                                    <input type="text" class="form-control" id="harga" name="harga" value="" required>
                                 </div>
-                                <span class="text-danger" id="hargaError"></span>
-
                             </div>
                         </div>
 
@@ -160,16 +155,19 @@
         $('#modal-judul').html("Tambah Topping");
         $('#tambah-edit-modal').modal('show');
     })
-
+    $("#harga").rules("add", {
+        minlength: 4,
+        number: true,
+    });
     // form tambah
     if ($("#form-tambah-edit").length > 0) {
-        // $("#form-tambah-edit").validate({
-            // submitHandler: function(form) {
+        $("#form-tambah-edit").validate({
+            submitHandler: function(form) {
                 var actionType = $('#tombol-simpan').val();
                 $('#tombol-simpan').html('Sending..');
                 $.ajax({
                     data: $('#form-tambah-edit').serialize(),
-                    url: "{{ route('admin.kategori-paket.store') }}",
+                    url: "{{ route('admin.topping.store') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function(data) {
@@ -185,14 +183,11 @@
                     },
                     error: function(data) {
                         console.log('Error:', data);
-                        $('#nameError').text(response.responseJSON.errors.name);
-                        $('#descError').text(response.responseJSON.errors.desc);
-                        $('#hargaError').text(response.responseJSON.errors.harga);
                         $('#tombol-simpan').html('Simpan');
                     }
                 });
-            // }
-        // })
+            }
+        })
     }
 
     // data edit
@@ -214,21 +209,21 @@
         dataId = $(this).attr('id');
         $('#konfirmasi-modal').modal('show');
     });
-    
+
     $('#tombol-hapus').click(function() {
         $.ajax({
-            url: "kategori-paket/" + dataId, 
+            url: "kategori-paket/" + dataId,
             type: 'delete',
             beforeSend: function() {
-                $('#tombol-hapus').text('Hapus Data'); 
+                $('#tombol-hapus').text('Hapus Data');
             },
-            success: function(data) { 
+            success: function(data) {
                 setTimeout(function() {
-                    $('#konfirmasi-modal').modal('hide'); 
+                    $('#konfirmasi-modal').modal('hide');
                     var oTable = $('#example1').dataTable();
-                    oTable.fnDraw(false); 
+                    oTable.fnDraw(false);
                 });
-                iziToast.warning({ 
+                iziToast.warning({
                     title: 'Data Berhasil Dihapus',
                     position: 'bottomRight'
                 });

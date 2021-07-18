@@ -56,12 +56,6 @@ class ToppingController extends Controller
     {
         $id = $request->id;
 
-        $request->validate([
-            'name'  =>  'required',
-            'desc'  =>  'required',
-            'harga' =>  'required',
-        ]);
-
         $post = ToppingPaket::updateOrCreate(['id'=>$id],
         [
             'name'  =>  $request->name,
