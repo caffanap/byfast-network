@@ -20,7 +20,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ asset('assets/adminlte') }}/index2.html"><b>Admin </b>Get Well Mom</a>
+            <a href="{{ route('home') }}"><b>Admin </b>ByFast Net</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
@@ -54,8 +54,8 @@
                         {{ Session::get('error') }}
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                          </button>
-                      </div>
+                        </button>
+                    </div>
                     @endif
                 </form>
             </div>

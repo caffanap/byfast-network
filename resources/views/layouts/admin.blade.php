@@ -4,19 +4,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin GetWellMom</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <title>Admin ByFast Net</title>
+
+    <link rel="stylesheet"
+        href="{{ asset('assets/adminlte') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="{{ asset('assets/adminlte') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="{{ asset('assets/adminlte') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet"
+        href="{{ asset('assets/adminlte') }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
@@ -24,18 +29,20 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet"
+        href="{{ asset('assets/adminlte') }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/plugins/summernote/summernote-bs4.min.css">
     <!-- iziToas -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css" integrity="sha256-pODNVtK3uOhL8FUNWWvFQK0QoQoV3YA9wGGng6mbZ0E=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css"
+        integrity="sha256-pODNVtK3uOhL8FUNWWvFQK0QoQoV3YA9wGGng6mbZ0E=" crossorigin="anonymous" />
 
     <style>
-        .active-menu{
+        .active-menu {
             color: white !important;
-            background-color: rgba(255,255,255,.1) !important;
+            background-color: rgba(255, 255, 255, .1) !important;
         }
     </style>
 </head>
@@ -60,7 +67,7 @@
                 </div>
 
                 <!-- SidebarSearch Form -->
-                <div class="form-inline">
+                {{-- <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
                         <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
                         <div class="input-group-append">
@@ -69,15 +76,17 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
 
                         <li class="nav-header">Main Menu</li>
                         <li class=" nav-item">
-                            <a href="{{ route('admin.kategori-paket.index')}}" class="{{strpos(Route::currentRouteName(), 'admin.kategori-paket') === 0 ? 'active-menu' : ''}} nav-link">
+                            <a href="{{ route('admin.kategori-paket.index')}}"
+                                class="{{strpos(Route::currentRouteName(), 'admin.kategori-paket') === 0 ? 'active-menu' : ''}} nav-link">
                                 <i class="nav-icon fas fa-cube"></i>
                                 <p>
                                     Kategori Paket
@@ -85,7 +94,8 @@
                             </a>
                         </li>
                         <li class=" nav-item">
-                            <a href="{{ route('admin.paket.index')}}" class="{{strpos(Route::currentRouteName(), 'admin.paket') === 0 ? 'active-menu' : ''}} nav-link">
+                            <a href="{{ route('admin.paket.index')}}"
+                                class="{{strpos(Route::currentRouteName(), 'admin.paket') === 0 ? 'active-menu' : ''}} nav-link">
                                 <i class="nav-icon fas fa-cubes"></i>
                                 <p>
                                     Paket
@@ -93,13 +103,33 @@
                             </a>
                         </li>
                         <li class=" nav-item">
-                            <a href="{{ route('admin.topping.index')}}" class="{{strpos(Route::currentRouteName(), 'admin.topping') === 0 ? 'active-menu' : ''}} nav-link">
+                            <a href="{{ route('admin.topping.index')}}"
+                                class="{{strpos(Route::currentRouteName(), 'admin.topping') === 0 ? 'active-menu' : ''}} nav-link">
                                 <i class="nav-icon fas fa-plus-square"></i>
                                 <p>
                                     Toping
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('admin/newsletter') }}" class="nav-link">
+                                <i class="nav-icon fas fa-shopping-cart"></i>
+                                <p>
+                                    Pemesanan
+                                    {{-- <span class="badge badge-info right">2</span> --}}
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('admin/newsletter') }}" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    About Us
+                                    {{-- <span class="badge badge-info right">2</span> --}}
+                                </p>
+                            </a>
+                        </li>
+
                         <li class="nav-header">Akun</li>
                         <li class="nav-item">
                             <a href="{{ url('auth/logout') }}" class="nav-link">
