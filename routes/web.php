@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomePageController@index');
+Route::get('/', 'HomePageController@index')->name('home');
 Route::get('/about', 'AboutPageController@index')->name('about');
 Route::get('/layanan', 'ServicePageController@index')->name('layanan');
 Route::get('/cek-status-pemesanan', 'CheckOrderStatusPageController@index')->name('cekStatusPemesanan');

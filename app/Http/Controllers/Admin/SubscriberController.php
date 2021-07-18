@@ -11,8 +11,8 @@ class SubscriberController extends Controller
     //
     public function index(Subscriber $subscriber)
     {
-        $data = $subscriber->all();
-        return view('admin.subscriber', ['subscriber' => $data]);
+        // $data = $subscriber->all();
+        return view('admin.subscriber', ['subscriber' => []]);
     }
 
     public function show(Subscriber $subscriber)
@@ -34,8 +34,8 @@ class SubscriberController extends Controller
         $response = $data->save();
         if ($response) {
             $txt = urlencode("Hallo nama saya $request->nama_lengkap. ($request->nama_panggilan) \nEmail : $request->email \nNo Telpon : $request->no_telpon \nUmur Kehamilan : $request->umur_kehamilan Bulan \nAlamat : $request->alamat \n\nSaya ingin berlangganan nih :)");
-            return redirect("https://wa.me/6281268603378?text=".$txt);
-        }else{
+            return redirect("https://wa.me/6281268603378?text=" . $txt);
+        } else {
             return false;
         }
     }
@@ -47,10 +47,10 @@ class SubscriberController extends Controller
             $delete = $data->delete();
             if ($delete) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }else{
+        } else {
             return false;
         }
     }

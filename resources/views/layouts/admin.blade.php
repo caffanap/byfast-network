@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin GetWellMom</title>
+    <title>Admin ByFast Net</title>
 
     <link rel="stylesheet"
         href="{{ asset('assets/adminlte') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -57,7 +57,7 @@
                 </div>
 
                 <!-- SidebarSearch Form -->
-                <div class="form-inline">
+                {{-- <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
                         <input class="form-control form-control-sidebar" type="search" placeholder="Search"
                             aria-label="Search">
@@ -67,7 +67,7 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
@@ -77,22 +77,50 @@
                         <li class="nav-header">Main Menu</li>
                         <li class="nav-item">
                             <a href="{{ url('admin/subscriber') }}" class="nav-link">
-                                <i class="nav-icon fa fa-users"></i>
+                                <i class="nav-icon fas fa-box"></i>
                                 <p>
-                                    Subscriber
+                                    Kategori Paket
                                     {{-- <span class="badge badge-info right">2</span> --}}
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('admin/newsletter') }}" class="nav-link">
-                                <i class="nav-icon fa fa-envelope"></i>
+                                <i class="nav-icon fas fa-boxes"></i>
                                 <p>
-                                    Newsletter
+                                    Paket
                                     {{-- <span class="badge badge-info right">2</span> --}}
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('admin/newsletter') }}" class="nav-link">
+                                <i class="nav-icon fas fa-puzzle-piece"></i>
+                                <p>
+                                    Topping
+                                    {{-- <span class="badge badge-info right">2</span> --}}
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('admin/newsletter') }}" class="nav-link">
+                                <i class="nav-icon fas fa-shopping-cart"></i>
+                                <p>
+                                    Pemesanan
+                                    {{-- <span class="badge badge-info right">2</span> --}}
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('admin/newsletter') }}" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    About Us
+                                    {{-- <span class="badge badge-info right">2</span> --}}
+                                </p>
+                            </a>
+                        </li>
+
                         <li class="nav-header">Akun</li>
                         <li class="nav-item">
                             <a href="{{ url('auth/logout') }}" class="nav-link">

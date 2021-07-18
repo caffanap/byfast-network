@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Title -->
-    <title>Get Well Mom - @yield('title')</title>
+    <title>ByFast Net - @yield('title')</title>
 
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" href="{{ asset('assets') }}/images/favicon.png">
