@@ -9,7 +9,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{route('admin.kategori-paket.index')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('admin.topping.index')}}">Home</a></li>
                     <li class="breadcrumb-item active">Topping</li>
                 </ol>
             </div>
@@ -155,13 +155,16 @@
         $('#modal-judul').html("Tambah Topping");
         $('#tambah-edit-modal').modal('show');
     })
-    $("#harga").rules("add", {
-        minlength: 4,
-        number: true,
-    });
+
     // form tambah
     if ($("#form-tambah-edit").length > 0) {
         $("#form-tambah-edit").validate({
+            rules: {
+                harga: {
+                    number: true,
+                    minlength: 5,
+                },
+            },
             submitHandler: function(form) {
                 var actionType = $('#tombol-simpan').val();
                 $('#tombol-simpan').html('Sending..');
@@ -193,7 +196,7 @@
     // data edit
     $(document).on('click', '.edit-post', function() {
         var data_id = $(this).data('id');
-        $.get('kategori-paket/' + data_id + '/edit', function(data) {
+        $.get('topping/' + data_id + '/edit', function(data) {
             $('#modal-judul').html("Edit Topping");
             $('#tombol-simpan').val("edit-post");
             $('#tambah-edit-modal').modal('show');
@@ -201,6 +204,7 @@
             $('#id').val(data.id);
             $('#name').val(data.name);
             $('#desc').val(data.desc);
+            $('#harga').val(data.harga);
         })
     });
 
@@ -212,7 +216,7 @@
 
     $('#tombol-hapus').click(function() {
         $.ajax({
-            url: "kategori-paket/" + dataId,
+            url: "topping/" + dataId,
             type: 'delete',
             beforeSend: function() {
                 $('#tombol-hapus').text('Hapus Data');
@@ -264,11 +268,17 @@
                 },
                 {
                     data: "created_at",
-                    name: "created_at"
+                    name: "created_at",
+                    render: (data) => {
+                        return new Date(data).toISOString().slice(0, 19).replace('T', ' ')
+                    }
                 },
                 {
                     data: "updated_at",
-                    name: "updated_at"
+                    name: "updated_at",
+                    render: (data) => {
+                        return new Date(data).toISOString().slice(0, 19).replace('T', ' ')
+                    }
                 },
                 {
                     data: "action",

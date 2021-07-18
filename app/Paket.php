@@ -10,7 +10,7 @@ class Paket extends Model
     //
     public function kategori()
     {
-        return $this->belongsTo(KategoriPaket::class, 'id');
+        return $this->belongsTo(KategoriPaket::class, 'kategori_pakets_id');
     }
 
 }
