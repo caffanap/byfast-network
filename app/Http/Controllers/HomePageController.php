@@ -9,7 +9,6 @@ use App\Pemesanan;
 use App\Subscriber;
 use App\ToppingPaket;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Date;
 
 class HomePageController extends Controller
 {
@@ -66,6 +65,7 @@ class HomePageController extends Controller
             }elseif ($data[0]['status_pemesanan'] == 'done') {
                 $data[0]['status_pemesanan'] = "Pemesanan anda telah terinstall di alamat anda";
             }
+            $data[0]['total_harga'] = "Rp " . number_format($data[0]['total_harga'],0,',','.');
             return response([
                 'status' => true,
                 'message' => 'Data Ditemukan!',
