@@ -15,13 +15,13 @@ class KategoriPaketSeeder extends Seeder
     public function run()
     {
         KategoriPaket::create([
-            'name'  =>  'terbaru',
-            'desc'  =>  'paket ini adalah paket terbaru'
+            'name'  =>  'Terbaru',
+            'desc'  =>  'Paket ini adalah paket terbaru'
         ]);
 
         KategoriPaket::create([
-            'name'  =>  'terpopuler',
-            'desc'  =>  'paket ini adalah paket terpopuler'
+            'name'  =>  'Terpopuler',
+            'desc'  =>  'Paket ini adalah paket terpopuler'
         ]);
     }
 }
