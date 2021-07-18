@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\KategoriPaketController;
+use App\KategoriPaket;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,10 +33,15 @@ Route::prefix('auth')->group(function () {
     Route::get('logout', 'AuthController@logout');
 });
 
-Route::prefix('admin')->middleware('auth')->group(function () {
-    Route::redirect('dashboard', 'subscriber');
+Route::prefix('admin')->middleware('auth')->as('admin.')->group(function () {
+    Route::redirect('dashboard', 'subscriber')->name('dashboard');
 
     // Route::get('dashboard', 'Admin\DashboardController@index');
-    Route::get('subscriber', 'Admin\SubscriberController@index');
-    Route::get('newsletter', 'Admin\NewsletterController@index');
+    // Route::get('subscriber', 'Admin\SubscriberController@index');
+    // Route::get('newsletter', 'Admin\NewsletterController@index');
+
+    // kategori paket
+    Route::resource('kategori-paket', 'Admin\KategoriPaketController');
+    Route::resource('paket', 'Admin\PaketController');
+    Route::resource('topping', 'Admin\ToppingController');
 });

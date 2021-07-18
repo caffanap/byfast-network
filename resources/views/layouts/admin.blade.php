@@ -35,6 +35,16 @@
     <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('assets/adminlte') }}/plugins/summernote/summernote-bs4.min.css">
+    <!-- iziToas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css"
+        integrity="sha256-pODNVtK3uOhL8FUNWWvFQK0QoQoV3YA9wGGng6mbZ0E=" crossorigin="anonymous" />
+
+    <style>
+        .active-menu {
+            color: white !important;
+            background-color: rgba(255, 255, 255, .1) !important;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -59,8 +69,7 @@
                 <!-- SidebarSearch Form -->
                 {{-- <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-sidebar">
                                 <i class="fas fa-search fa-fw"></i>
@@ -75,30 +84,30 @@
                         data-accordion="false">
 
                         <li class="nav-header">Main Menu</li>
-                        <li class="nav-item">
-                            <a href="{{ url('admin/subscriber') }}" class="nav-link">
-                                <i class="nav-icon fas fa-box"></i>
+                        <li class=" nav-item">
+                            <a href="{{ route('admin.kategori-paket.index')}}"
+                                class="{{strpos(Route::currentRouteName(), 'admin.kategori-paket') === 0 ? 'active-menu' : ''}} nav-link">
+                                <i class="nav-icon fas fa-cube"></i>
                                 <p>
                                     Kategori Paket
-                                    {{-- <span class="badge badge-info right">2</span> --}}
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ url('admin/newsletter') }}" class="nav-link">
-                                <i class="nav-icon fas fa-boxes"></i>
+                        <li class=" nav-item">
+                            <a href="{{ route('admin.paket.index')}}"
+                                class="{{strpos(Route::currentRouteName(), 'admin.paket') === 0 ? 'active-menu' : ''}} nav-link">
+                                <i class="nav-icon fas fa-cubes"></i>
                                 <p>
                                     Paket
-                                    {{-- <span class="badge badge-info right">2</span> --}}
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ url('admin/newsletter') }}" class="nav-link">
-                                <i class="nav-icon fas fa-puzzle-piece"></i>
+                        <li class=" nav-item">
+                            <a href="{{ route('admin.topping.index')}}"
+                                class="{{strpos(Route::currentRouteName(), 'admin.topping') === 0 ? 'active-menu' : ''}} nav-link">
+                                <i class="nav-icon fas fa-plus-square"></i>
                                 <p>
-                                    Topping
-                                    {{-- <span class="badge badge-info right">2</span> --}}
+                                    Toping
                                 </p>
                             </a>
                         </li>
@@ -153,7 +162,6 @@
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
         $.widget.bridge('uibutton', $.ui.button)
-
     </script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('assets/adminlte') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -176,17 +184,6 @@
 
 
 
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "excel", "pdf"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        });
-
-    </script>
 
     <!-- ChartJS -->
     <script src="{{ asset('assets/adminlte') }}/plugins/chart.js/Chart.min.js"></script>
@@ -211,11 +208,11 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('assets/adminlte') }}/dist/js/adminlte.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('assets/adminlte') }}/dist/js/demo.js"></script>
+    <!-- <script src="{{ asset('assets/adminlte') }}/dist/js/demo.js"></script> -->
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="{{ asset('assets/adminlte') }}/dist/js/pages/dashboard.js"></script>
+    <!-- <script src="{{ asset('assets/adminlte') }}/dist/js/pages/dashboard.js"></script> -->
 
-
+    @yield('script')
 </body>
 
 </html>
