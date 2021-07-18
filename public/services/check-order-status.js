@@ -65,7 +65,7 @@ $(document).ready(function (){
                   </tr>
                   </tr>
                   <tr>
-                      <th scope="col">STATUS</th>
+                      <th scope="col">STATUS PEMASANGAN</th>
                       <td class="text-success text-bold">${rows.status_pemesanan.toUpperCase()}</td>
                   </tr>
                   </tr>
