@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\KategoriPaket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,8 +14,9 @@ class PaketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(KategoriPaket $kategoriPaket, Request $request)
     {
+        $kategori = $kategoriPaket->all();
         $pakets = DB::table('pakets')
         ->select('pakets.id', 'kategori_pakets.name as kategori_paket_name', 'pakets.name', 'pakets.desc', 'pakets.harga', 
         DB::raw('DATE_FORMAT(pakets.created_at, "%d %M %Y") as created_at'), 
@@ -35,7 +37,7 @@ class PaketController extends Controller
             ->make(true);
         }
 
-        return view('admin.paket.index');
+        return view('admin.paket.index', ['kategori' => $kategori]);
     }
 
     /**

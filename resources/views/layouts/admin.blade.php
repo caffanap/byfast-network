@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin ByFast Net</title>
 
     <link rel="stylesheet"
@@ -44,6 +45,7 @@
             color: white !important;
             background-color: rgba(255, 255, 255, .1) !important;
         }
+
     </style>
 </head>
 
@@ -85,8 +87,8 @@
 
                         <li class="nav-header">Main Menu</li>
                         <li class=" nav-item">
-                            <a href="{{ route('admin.kategori-paket.index')}}"
-                                class="{{strpos(Route::currentRouteName(), 'admin.kategori-paket') === 0 ? 'active-menu' : ''}} nav-link">
+                            <a href="{{ route('admin.kategori-paket.index') }}"
+                                class="{{ strpos(Route::currentRouteName(), 'admin.kategori-paket') === 0 ? 'active-menu' : '' }} nav-link">
                                 <i class="nav-icon fas fa-cube"></i>
                                 <p>
                                     Kategori Paket
@@ -94,8 +96,8 @@
                             </a>
                         </li>
                         <li class=" nav-item">
-                            <a href="{{ route('admin.paket.index')}}"
-                                class="{{strpos(Route::currentRouteName(), 'admin.paket') === 0 ? 'active-menu' : ''}} nav-link">
+                            <a href="{{ route('admin.paket.index') }}"
+                                class="{{ strpos(Route::currentRouteName(), 'admin.paket') === 0 ? 'active-menu' : '' }} nav-link">
                                 <i class="nav-icon fas fa-cubes"></i>
                                 <p>
                                     Paket
@@ -103,8 +105,8 @@
                             </a>
                         </li>
                         <li class=" nav-item">
-                            <a href="{{ route('admin.topping.index')}}"
-                                class="{{strpos(Route::currentRouteName(), 'admin.topping') === 0 ? 'active-menu' : ''}} nav-link">
+                            <a href="{{ route('admin.topping.index') }}"
+                                class="{{ strpos(Route::currentRouteName(), 'admin.topping') === 0 ? 'active-menu' : '' }} nav-link">
                                 <i class="nav-icon fas fa-plus-square"></i>
                                 <p>
                                     Toping

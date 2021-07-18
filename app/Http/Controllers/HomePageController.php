@@ -59,7 +59,7 @@ class HomePageController extends Controller
         $data = $pemesanan->with('pakets', 'topping_pakets')->where('no_pemesanan', $request->no_pemesanan)->get();
         if (count($data) > 0) {
             if ($data[0]['status_pemesanan'] == 'pending') {
-                $data[0]['status_pemesanan'] = "Pemesanan anda sedang diajukan dan menunggu sedang menunggu konfirmasi";
+                $data[0]['status_pemesanan'] = "Pemesanan anda sedang diajukan dan sedang menunggu konfirmasi";
             }elseif ($data[0]['status_pemesanan'] == 'proses') {
                 $data[0]['status_pemesanan'] = "Pemesanan anda telah dikonfirmasi dan akan segera diproses pemesangannya";
             }elseif ($data[0]['status_pemesanan'] == 'done') {
