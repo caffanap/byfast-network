@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomePageController@index');
-Route::get('/about', 'AboutPageController@index');
-Route::get('/services', 'ServicePageController@index');
+Route::get('/', 'HomePageController@index')->name('home');
+Route::get('/about', 'AboutPageController@index')->name('about');
+Route::get('/layanan', 'ServicePageController@index')->name('layanan');
+Route::get('/cek-status-pemesanan', 'CheckOrderStatusPageController@index')->name('cekStatusPemesanan');
 Route::get('/faq', 'FaqPageController@index');
 
 Route::post('/subscriber/store', 'HomePageController@store');
