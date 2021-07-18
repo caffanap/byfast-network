@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\ToppingPaket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -53,7 +54,22 @@ class ToppingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = $request->id;
+
+        $request->validate([
+            'name'  =>  'required',
+            'desc'  =>  'required',
+            'harga' =>  'required',
+        ]);
+
+        $post = ToppingPaket::updateOrCreate(['id'=>$id],
+        [
+            'name'  =>  $request->name,
+            'desc'  =>  $request->desc,
+            'harga'  =>  $request->harga,
+        ]);
+
+        return response()->json($post);
     }
 
     /**
