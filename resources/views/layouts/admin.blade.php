@@ -122,12 +122,12 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ url('admin/newsletter') }}" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
+                        <li class=" nav-item">
+                            <a href="{{ route('admin.about-us.index') }}"
+                                class="{{ strpos(Route::currentRouteName(), 'admin.about-us') === 0 ? 'active-menu' : '' }} nav-link">
+                                <i class="nav-icon fas fa-plus-square"></i>
                                 <p>
                                     About Us
-                                    {{-- <span class="badge badge-info right">2</span> --}}
                                 </p>
                             </a>
                         </li>
