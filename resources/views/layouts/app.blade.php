@@ -131,9 +131,6 @@
                                     <a href="{{ route('about') }}"><span>About</span></a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('layanan') }}"><span>Layanan</span></a>
-                                </li>
-                                <li>
                                     <a href="{{ route('cekStatusPemesanan') }}"><span>Cek Status Pemesanan</span></a>
                                 </li>
                             </ul>

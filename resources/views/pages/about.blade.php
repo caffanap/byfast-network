@@ -3,7 +3,7 @@
 @section('title', 'About')
 
 @section('content')
-{{ $about->desc1 }} 
+{{-- {{ $about->desc1 }} --}}
 {{-- Output  --}}
 <div class="page-content bg-white">
     <!-- Banner  -->
@@ -68,7 +68,7 @@
                         </div>
                         <div class="icon-content">
                             <h4 class="dlab-title m-b15">Nikmati Fitur Konsultasi dan Informasi Online Kami</h4>
-                            <p>Menunggu  Persalinan Anda dengan Seksama</p>
+                            <p>Menunggu Persalinan Anda dengan Seksama</p>
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,8 @@
                 <div class="col-lg-6 m-b30 wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.4s">
                     <div class="section-head style-1">
                         <h6 class="sub-title text-primary m-b15">About Us</h6>
-                        <h2 class="title m-b20" style="font-size: 40px">Get Well Mom menghadirkan solusi kesehatan dalam genggaman.</h2>
+                        <h2 class="title m-b20" style="font-size: 40px">Get Well Mom menghadirkan solusi kesehatan dalam
+                            genggaman.</h2>
                         <p>Temukan segala bentuk pelayanan kesehatan untuk Ibu Hamil dan menyusui , meliputi :</p>
                     </div>
                     <ul class="list-check primary m-b30">
@@ -107,5 +108,5 @@
 
 </div>
 
-    
+
 @endsection

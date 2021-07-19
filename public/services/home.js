@@ -20,8 +20,8 @@ $(document).ready(function (){
     packetContainer.html(sections);
   }
   
-  const cardElement = ({ id, name, harga: price, img }) => (`
-    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+  const cardElement = ({ id, name, harga: price }) => (`
+  <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
         <div class="pricingtable-wrapper style-2 m-md-b30">
             <div class="pricingtable-inner">
                 <div class="pricingtable-title">
@@ -29,7 +29,6 @@ $(document).ready(function (){
                     <p style="visibility: hidden"> a</p>
                 </div>
                 <div class="pricingtable-media m-b15">
-                    <img src="${img}" width="125" alt="" />
                 </div>
                 <div class="pricingtable-price">
                     <h2 class="pricingtable-bx" style="font-size: 22px">Rp ${price}<small
