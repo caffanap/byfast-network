@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\KategoriPaket;
+use App\Paket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,13 +17,14 @@ class PaketController extends Controller
      */
     public function index(KategoriPaket $kategoriPaket, Request $request)
     {
-        $kategori = $kategoriPaket->all();
-        $pakets = DB::table('pakets')
-        ->select('pakets.id', 'kategori_pakets.name as kategori_paket_name', 'pakets.name', 'pakets.desc', 'pakets.harga', 
-        DB::raw('DATE_FORMAT(pakets.created_at, "%d %M %Y") as created_at'), 
-        DB::raw('DATE_FORMAT(pakets.updated_at, "%d %M %Y") as updated_at'))
-        ->join('kategori_pakets', 'pakets.kategori_pakets_id', '=', 'kategori_pakets.id')
-        ;
+        $kategoris = $kategoriPaket->all();
+        // $pakets = DB::table('pakets')
+        // ->select('pakets.id', 'kategori_pakets.name as kategori_paket_name', 'pakets.name', 'pakets.desc', 'pakets.harga', 
+        // DB::raw('DATE_FORMAT(pakets.created_at, "%d %M %Y") as created_at'), 
+        // DB::raw('DATE_FORMAT(pakets.updated_at, "%d %M %Y") as updated_at'))
+        // ->join('kategori_pakets', 'pakets.kategori_pakets_id', '=', 'kategori_pakets.id')
+        // ;
+        $pakets = Paket::with('kategori');
 
         if ($request->ajax()) {
             return datatables()->of($pakets)
@@ -32,12 +34,15 @@ class PaketController extends Controller
                 $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i class="far fa-trash-alt"></i> Delete</button>';     
                 return $button;
             })
+            ->addColumn('kategori', function (Paket $paket) {
+                return $paket->kategori->name;
+            })
             ->rawColumns(['action'])
             ->addIndexColumn()
             ->make(true);
         }
 
-        return view('admin.paket.index', ['kategori' => $kategori]);
+        return view('admin.paket.index', ['kategoris' => $kategoris]);
     }
 
     /**
@@ -58,7 +63,17 @@ class PaketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = $request->id;
+
+        $post = Paket::updateOrCreate(['id'=>$id],
+        [
+            'kategori_pakets_id'  =>  $request->kategori_pakets_id,
+            'name'  =>  $request->name,
+            'desc'  =>  $request->desc,
+            'harga'  =>  $request->harga,
+        ]);
+
+        return response()->json($post);
     }
 
     /**
@@ -78,9 +93,9 @@ class PaketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Paket $paket)
     {
-        //
+        return response()->json($paket);
     }
 
     /**
@@ -101,8 +116,10 @@ class PaketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Paket $paket)
     {
-        //
+        $paketDeleted = $paket->delete();
+
+        return response()->json($paketDeleted);
     }
 }

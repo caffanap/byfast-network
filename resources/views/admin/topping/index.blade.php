@@ -9,7 +9,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{route('admin.kategori-paket.index')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('admin.topping.index')}}">Home</a></li>
                     <li class="breadcrumb-item active">Topping</li>
                 </ol>
             </div>
@@ -46,9 +46,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="name" class="col-sm-12 control-label">Harga</label>
+                                <label for="name" class="col-sm-12 control-label">Harga (IDR)</label>
                                 <div class="col-sm-12">
-                                    <input type="number" class="form-control" id="harga" name="harga" value="" required>
+                                    <input type="text" class="form-control" id="harga" name="harga" value="" required>
                                 </div>
                             </div>
                         </div>
@@ -159,12 +159,18 @@
     // form tambah
     if ($("#form-tambah-edit").length > 0) {
         $("#form-tambah-edit").validate({
+            rules: {
+                harga: {
+                    number: true,
+                    minlength: 5,
+                },
+            },
             submitHandler: function(form) {
                 var actionType = $('#tombol-simpan').val();
                 $('#tombol-simpan').html('Sending..');
                 $.ajax({
                     data: $('#form-tambah-edit').serialize(),
-                    url: "{{ route('admin.kategori-paket.store') }}",
+                    url: "{{ route('admin.topping.store') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function(data) {
@@ -190,7 +196,7 @@
     // data edit
     $(document).on('click', '.edit-post', function() {
         var data_id = $(this).data('id');
-        $.get('kategori-paket/' + data_id + '/edit', function(data) {
+        $.get('topping/' + data_id + '/edit', function(data) {
             $('#modal-judul').html("Edit Topping");
             $('#tombol-simpan').val("edit-post");
             $('#tambah-edit-modal').modal('show');
@@ -198,6 +204,7 @@
             $('#id').val(data.id);
             $('#name').val(data.name);
             $('#desc').val(data.desc);
+            $('#harga').val(data.harga);
         })
     });
 
@@ -206,21 +213,21 @@
         dataId = $(this).attr('id');
         $('#konfirmasi-modal').modal('show');
     });
-    
+
     $('#tombol-hapus').click(function() {
         $.ajax({
-            url: "kategori-paket/" + dataId, 
+            url: "topping/" + dataId,
             type: 'delete',
             beforeSend: function() {
-                $('#tombol-hapus').text('Hapus Data'); 
+                $('#tombol-hapus').text('Hapus Data');
             },
-            success: function(data) { 
+            success: function(data) {
                 setTimeout(function() {
-                    $('#konfirmasi-modal').modal('hide'); 
+                    $('#konfirmasi-modal').modal('hide');
                     var oTable = $('#example1').dataTable();
-                    oTable.fnDraw(false); 
+                    oTable.fnDraw(false);
                 });
-                iziToast.warning({ 
+                iziToast.warning({
                     title: 'Data Berhasil Dihapus',
                     position: 'bottomRight'
                 });
@@ -261,11 +268,17 @@
                 },
                 {
                     data: "created_at",
-                    name: "created_at"
+                    name: "created_at",
+                    render: (data) => {
+                        return new Date(data).toISOString().slice(0, 19).replace('T', ' ')
+                    }
                 },
                 {
                     data: "updated_at",
-                    name: "updated_at"
+                    name: "updated_at",
+                    render: (data) => {
+                        return new Date(data).toISOString().slice(0, 19).replace('T', ' ')
+                    }
                 },
                 {
                     data: "action",

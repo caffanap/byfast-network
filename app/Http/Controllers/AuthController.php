@@ -14,7 +14,7 @@ class AuthController extends Controller
         if (!Auth::check()){
             return view('admin.login');
         }else{
-            return redirect('admin/dashboard');
+            return redirect('admin/kategori-paket');
         }
     }  
 
@@ -27,7 +27,7 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('admin/dashboard');
+            return redirect()->intended('admin/kategori-paket');
         }else{
             return redirect("auth/login")->withError('Email atau Password anda Salah!');
         }

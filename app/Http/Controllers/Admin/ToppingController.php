@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\ToppingPaket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,10 +16,11 @@ class ToppingController extends Controller
      */
     public function index(Request $request)
     {
-        $toppings = DB::table('topping_pakets')->select('id', 'name', 'desc', 'harga', 
-        DB::raw('DATE_FORMAT(created_at, "%d %M %Y") as created_at'), 
-        DB::raw('DATE_FORMAT(updated_at, "%d %M %Y") as updated_at'));
-
+        // $toppings = DB::table('topping_pakets')->select('id', 'name', 'desc', 'harga', 
+        // DB::raw('DATE_FORMAT(created_at, "%d %M %Y") as created_at'), 
+        // DB::raw('DATE_FORMAT(updated_at, "%d %M %Y") as updated_at'));
+        $toppings = ToppingPaket::all();
+        
         if ($request->ajax()) {
             return datatables()->of($toppings)
             ->addColumn('action', function($data){
@@ -53,7 +55,16 @@ class ToppingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = $request->id;
+
+        $post = ToppingPaket::updateOrCreate(['id'=>$id],
+        [
+            'name'  =>  $request->name,
+            'desc'  =>  $request->desc,
+            'harga'  =>  $request->harga,
+        ]);
+
+        return response()->json($post);
     }
 
     /**
@@ -73,9 +84,9 @@ class ToppingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ToppingPaket $topping)
     {
-        //
+        return response()->json($topping);
     }
 
     /**
@@ -96,8 +107,10 @@ class ToppingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ToppingPaket $topping)
     {
-        //
+        $toppingDeleted = $topping->delete();
+
+        return response()->json($toppingDeleted);
     }
 }
