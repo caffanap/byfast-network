@@ -114,7 +114,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('admin/newsletter') }}" class="nav-link">
+                            <a href="{{ url('admin/pemesanan') }}" class="nav-link">
                                 <i class="nav-icon fas fa-shopping-cart"></i>
                                 <p>
                                     Pemesanan

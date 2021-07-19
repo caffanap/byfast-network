@@ -1,16 +1,17 @@
 @extends('layouts.admin')
 
 @section('content')
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Topping</h1>
+                <h1>Pemesanan</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{route('admin.topping.index')}}">Home</a></li>
-                    <li class="breadcrumb-item active">Topping</li>
+                    <li class="breadcrumb-item"><a href="{{route('admin.kategori-paket.index')}}">Home</a></li>
+                    <li class="breadcrumb-item active">Pemesanan</li>
                 </ol>
             </div>
         </div>
@@ -45,12 +46,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="name" class="col-sm-12 control-label">Harga (IDR)</label>
-                                <div class="col-sm-12">
-                                    <input type="text" class="form-control" id="harga" name="harga" value="" required>
-                                </div>
-                            </div>
                         </div>
 
                         <div class="col-sm-offset-2 col-sm-12">
@@ -97,7 +92,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Data Topping</h3>
+                        <h3 class="card-title">Data Pemesanan</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive">
@@ -108,7 +103,6 @@
                                     <th>ID</th>
                                     <th>Nama</th>
                                     <th>Deskripsi</th>
-                                    <th>Harga</th>
                                     <th>Created at</th>
                                     <th>Updated at</th>
                                     <th>Action</th>
@@ -152,25 +146,19 @@
         $('#button-simpan').val("create-post");
         $('#id').val('');
         $('#form-tambah-edit').trigger("reset");
-        $('#modal-judul').html("Tambah Topping");
+        $('#modal-judul').html("Tambah Pemesanan");
         $('#tambah-edit-modal').modal('show');
     })
 
     // form tambah
     if ($("#form-tambah-edit").length > 0) {
         $("#form-tambah-edit").validate({
-            rules: {
-                harga: {
-                    number: true,
-                    minlength: 5,
-                },
-            },
             submitHandler: function(form) {
                 var actionType = $('#tombol-simpan').val();
                 $('#tombol-simpan').html('Sending..');
                 $.ajax({
                     data: $('#form-tambah-edit').serialize(),
-                    url: "{{ route('admin.topping.store') }}",
+                    url: "{{ route('admin.kategori-paket.store') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function(data) {
@@ -196,15 +184,14 @@
     // data edit
     $(document).on('click', '.edit-post', function() {
         var data_id = $(this).data('id');
-        $.get('topping/' + data_id + '/edit', function(data) {
-            $('#modal-judul').html("Edit Topping");
+        $.get('kategori-paket/' + data_id + '/edit', function(data) {
+            $('#modal-judul').html("Edit Pemesanan");
             $('#tombol-simpan').val("edit-post");
             $('#tambah-edit-modal').modal('show');
             //set value                
             $('#id').val(data.id);
             $('#name').val(data.name);
             $('#desc').val(data.desc);
-            $('#harga').val(data.harga);
         })
     });
 
@@ -213,21 +200,21 @@
         dataId = $(this).attr('id');
         $('#konfirmasi-modal').modal('show');
     });
-
+    
     $('#tombol-hapus').click(function() {
         $.ajax({
-            url: "topping/" + dataId,
+            url: "kategori-paket/" + dataId, 
             type: 'delete',
             beforeSend: function() {
-                $('#tombol-hapus').text('Hapus Data');
+                $('#tombol-hapus').text('Hapus Data'); 
             },
-            success: function(data) {
+            success: function(data) { 
                 setTimeout(function() {
-                    $('#konfirmasi-modal').modal('hide');
+                    $('#konfirmasi-modal').modal('hide'); 
                     var oTable = $('#example1').dataTable();
-                    oTable.fnDraw(false);
+                    oTable.fnDraw(false); 
                 });
-                iziToast.warning({
+                iziToast.warning({ 
                     title: 'Data Berhasil Dihapus',
                     position: 'bottomRight'
                 });
@@ -247,7 +234,7 @@
             processing: true,
             serverSide: true,
             ajax: {
-                url: "{{route('admin.topping.index')}}",
+                url: "{{route('admin.pemesanan.index')}}",
                 type: 'GET',
             },
             columns: [{
@@ -261,10 +248,6 @@
                 {
                     data: "desc",
                     name: "desc"
-                },
-                {
-                    data: "harga",
-                    name: "harga"
                 },
                 {
                     data: "created_at",

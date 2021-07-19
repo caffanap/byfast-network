@@ -9,7 +9,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{route('admin.kategori-paket.index')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('admin.paket.index')}}">Home</a></li>
                     <li class="breadcrumb-item active">Paket</li>
                 </ol>
             </div>
@@ -32,6 +32,16 @@
                             <input type="hidden" name="id" id="id">
 
                             <div class="form-group">
+                                <label for="kategori_pakets_id" class="col-sm-12 control-label">Kategori Paket</label>
+                                <div class="col-sm-12">
+                                    <select type="text" class="form-control" id="kategori_pakets_id" name="kategori_pakets_id" value="" required>
+                                        @foreach($kategoris as $kategori)
+                                        <option value="{{$kategori->id}}">{{$kategori->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="name" class="col-sm-12 control-label">Nama</label>
                                 <div class="col-sm-12">
                                     <input type="text" class="form-control" id="name" name="name" value="" required>
@@ -39,12 +49,17 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="name" class="col-sm-12 control-label">Deskripsi</label>
+                                <label for="desc" class="col-sm-12 control-label">Deskripsi</label>
                                 <div class="col-sm-12">
                                     <textarea class="form-control" name="desc" id="desc" required></textarea>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label for="harga" class="col-sm-12 control-label">Harga (IDR)</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="harga" name="harga" value="" required>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-sm-offset-2 col-sm-12">
@@ -154,12 +169,18 @@
     // form tambah
     if ($("#form-tambah-edit").length > 0) {
         $("#form-tambah-edit").validate({
+            rules: {
+                harga: {
+                    number:true,
+                    minlength: 5,
+                },
+            },
             submitHandler: function(form) {
                 var actionType = $('#tombol-simpan').val();
                 $('#tombol-simpan').html('Sending..');
                 $.ajax({
                     data: $('#form-tambah-edit').serialize(),
-                    url: "{{ route('admin.kategori-paket.store') }}",
+                    url: "{{ route('admin.paket.store') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function(data) {
@@ -185,14 +206,16 @@
     // data edit
     $(document).on('click', '.edit-post', function() {
         var data_id = $(this).data('id');
-        $.get('kategori-paket/' + data_id + '/edit', function(data) {
+        $.get('paket/' + data_id + '/edit', function(data) {
             $('#modal-judul').html("Edit Paket");
             $('#tombol-simpan').val("edit-post");
             $('#tambah-edit-modal').modal('show');
             //set value                
             $('#id').val(data.id);
+            $('#kategori_pakets_id').val(data.kategori_pakets_id).change();
             $('#name').val(data.name);
             $('#desc').val(data.desc);
+            $('#harga').val(data.harga);
         })
     });
 
@@ -201,21 +224,21 @@
         dataId = $(this).attr('id');
         $('#konfirmasi-modal').modal('show');
     });
-    
+
     $('#tombol-hapus').click(function() {
         $.ajax({
-            url: "kategori-paket/" + dataId, 
+            url: "paket/" + dataId,
             type: 'delete',
             beforeSend: function() {
-                $('#tombol-hapus').text('Hapus Data'); 
+                $('#tombol-hapus').text('Hapus Data');
             },
-            success: function(data) { 
+            success: function(data) {
                 setTimeout(function() {
-                    $('#konfirmasi-modal').modal('hide'); 
+                    $('#konfirmasi-modal').modal('hide');
                     var oTable = $('#example1').dataTable();
-                    oTable.fnDraw(false); 
+                    oTable.fnDraw(false);
                 });
-                iziToast.warning({ 
+                iziToast.warning({
                     title: 'Data Berhasil Dihapus',
                     position: 'bottomRight'
                 });
@@ -243,8 +266,8 @@
                     name: "id"
                 },
                 {
-                    data: "kategori_paket_name",
-                    name: "kategori_paket_name"
+                    data: "kategori",
+                    name: "kategori.name"
                 },
                 {
                     data: "name",
@@ -260,11 +283,17 @@
                 },
                 {
                     data: "created_at",
-                    name: "created_at"
+                    name: "created_at",
+                    render: (data) => {
+                        return new Date(data).toISOString().slice(0, 19).replace('T', ' ')
+                    }
                 },
                 {
                     data: "updated_at",
-                    name: "updated_at"
+                    name: "updated_at",
+                    render: (data) => {
+                        return new Date(data).toISOString().slice(0, 19).replace('T', ' ')
+                    }
                 },
                 {
                     data: "action",
