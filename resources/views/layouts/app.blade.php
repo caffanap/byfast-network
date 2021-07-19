@@ -26,65 +26,7 @@
 
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/vendor/swiper/css/swiper.min.css">
-    <style>
-        * {
-            scroll-behavior: smooth;
-        }
 
-        .label-container {
-            position: fixed;
-            bottom: 48px;
-            left: 105px;
-            display: table;
-            visibility: hidden;
-        }
-
-        .label-text {
-            color: #FFF;
-            background: rgba(51, 51, 51, 0.5);
-            display: table-cell;
-            vertical-align: middle;
-            padding: 10px;
-            border-radius: 3px;
-        }
-
-        .label-arrow {
-            display: table-cell;
-            vertical-align: middle;
-            color: #333;
-            opacity: 0.5;
-        }
-
-        .float {
-            position: fixed;
-            z-index: 999;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            left: 40px;
-            background-color: #5acc37;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            box-shadow: 2px 2px 3px #999;
-        }
-
-        .my-float {
-            font-size: 24px;
-            margin-top: 18px;
-        }
-
-        a.float+div.label-container {
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility 0s, opacity 0.5s ease;
-        }
-
-        a.float:hover+div.label-container {
-            visibility: visible;
-            opacity: 1;
-        }
-    </style>
     <script src="{{ asset('assets') }}/js/jquery.min.js"></script>
     <script>
         var baseUrl = window.location.origin;
@@ -156,33 +98,6 @@
 
         <!-- Footer -->
         <footer class="site-footer style-2" id="footer">
-            <div class="container">
-                <div class="dlab-subscribe style-1 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <h2 class="title">Berlanggan ke newsletter kami!</h2>
-                        </div>
-                        <div class="col-lg-6">
-                            <form action="{{ url('/newsletter') }}" method="post">
-                                @csrf
-                                <div class="dzSubscribeMsg"></div>
-                                <div class="form-group">
-                                    <div class="input-group shadow">
-                                        <input name="email" required="required" type="email" class="form-control"
-                                            placeholder="Alamat emailmu">
-                                        <div class="input-group-addon">
-                                            <button name="submit" value="Submit" type="submit"
-                                                class="btn btn-primary gradient">
-                                                <i class="las la-paper-plane scale4"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="footer-top">
                 <div class="container">
                     <div class="row">
@@ -247,12 +162,6 @@
         </footer>
         <!-- Footer End -->
         <button class="scroltop icon-up" type="button"><i class="fa fa-arrow-up"></i></button>
-    </div>
-    <a href="https://wa.me/6281268603378" class="float">
-        <i class="fa fa-whatsapp my-float"></i>
-    </a>
-    <div class="label-container">
-        <div class="label-text">WhatsApp</div>
     </div>
     @if (Session::has('error'))
     <script>
