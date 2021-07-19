@@ -45,6 +45,7 @@ Route::prefix('admin')->middleware('auth')->as('admin.')->group(function () {
     Route::resource('kategori-paket', 'Admin\KategoriPaketController');
     Route::resource('paket', 'Admin\PaketController');
     Route::resource('topping', 'Admin\ToppingController');
+    Route::resource('about-us', 'Admin\AboutUsController')->only('index', 'store', 'edit');
     
     
     Route::resource('pemesanan', 'PemesananController');
