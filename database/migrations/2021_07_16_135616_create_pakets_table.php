@@ -19,7 +19,6 @@ class CreatePaketsTable extends Migration
             $table->foreign('kategori_pakets_id')->references('id')->on('kategori_pakets')->onDelete('cascade');
             $table->string('name');
             $table->string('desc')->nullable();
-            $table->string('img')->nullable();
             $table->integer('harga');
             $table->timestamps();
         });

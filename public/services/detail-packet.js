@@ -43,13 +43,15 @@ $(document).ready(function (){
 
   const element = ({paket: {name, kategori, harga, desc}}, rows) => (`
     <div class="section-head style-1 text-center">
+      <h5 class="text-center text-primary">Paket ${kategori.name}</h5>
       <h2 class="title" style="font-size: 40px">${name}</h2>
       <div class="mt-3">${desc}</div>
     </div>
+    <div class="col-md-12 mb-5 mt-5">
+        <h4 class="text-center">HANYA</h4>
+        <h2 class="text-center text-secondary">Rp ${harga}</h2>
+    </div>
     <div class="row justify-content-center">
-      <div class="col-md-12 mb-3">
-          <h5 class="text-center">PAKET ${kategori.name}</h5>
-      </div>
       <div class="col-md-6">
           <h6>Topping</h6>
           <table class="table table-striped">
@@ -65,11 +67,6 @@ $(document).ready(function (){
                   ${rows}
               </tbody>
           </table>
-      </div>
-      <div class="col-md-12 mb-3 mt-5">
-          <h5 class="text-center">HANYA</h5>
-          <h5 class="text-center">Rp${harga}</h5>
-          <p class="text-center text-muted text-small">* Harga paket</p>
       </div>
     </div>
   `);
