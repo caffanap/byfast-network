@@ -10,7 +10,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{route('admin.kategori-paket.index')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('admin.pemesanan.index')}}">Home</a></li>
                     <li class="breadcrumb-item active">Pemesanan</li>
                 </ol>
             </div>
@@ -96,13 +96,14 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive">
-                        <a href="javascript:void(0)" class="btn btn-primary" id="tombol-tambah">Tambah</a>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>No Pemesanan</th>
+                                    <th>Nama Paket</th>
                                     <th>Nama</th>
-                                    <th>Deskripsi</th>
+                                    <th>No HP</th>
                                     <th>Created at</th>
                                     <th>Updated at</th>
                                     <th>Action</th>
@@ -141,15 +142,6 @@
         });
     });
 
-    // button tambah
-    $('#tombol-tambah').click(function() {
-        $('#button-simpan').val("create-post");
-        $('#id').val('');
-        $('#form-tambah-edit').trigger("reset");
-        $('#modal-judul').html("Tambah Pemesanan");
-        $('#tambah-edit-modal').modal('show');
-    })
-
     // form tambah
     if ($("#form-tambah-edit").length > 0) {
         $("#form-tambah-edit").validate({
@@ -158,7 +150,7 @@
                 $('#tombol-simpan').html('Sending..');
                 $.ajax({
                     data: $('#form-tambah-edit').serialize(),
-                    url: "{{ route('admin.kategori-paket.store') }}",
+                    url: "{{ route('admin.pemesanan.store') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function(data) {
@@ -182,9 +174,9 @@
     }
 
     // data edit
-    $(document).on('click', '.edit-post', function() {
-        var data_id = $(this).data('id');
-        $.get('kategori-paket/' + data_id + '/edit', function(data) {
+    $(document).on('click', '.view', function() {
+        var data_id = $(this).attr('id');
+        $.get('pemesanan/' + data_id + '/edit?id='+data_id, function(data) {
             $('#modal-judul').html("Edit Pemesanan");
             $('#tombol-simpan').val("edit-post");
             $('#tambah-edit-modal').modal('show');
@@ -195,15 +187,10 @@
         })
     });
 
-    //delete
-    $(document).on('click', '.delete', function() {
-        dataId = $(this).attr('id');
-        $('#konfirmasi-modal').modal('show');
-    });
     
     $('#tombol-hapus').click(function() {
         $.ajax({
-            url: "kategori-paket/" + dataId, 
+            url: "pemesanan/" + dataId, 
             type: 'delete',
             beforeSend: function() {
                 $('#tombol-hapus').text('Hapus Data'); 
@@ -242,12 +229,20 @@
                     name: "id"
                 },
                 {
-                    data: "name",
-                    name: "name"
+                    data: "no_pemesanan",
+                    name: "no_pemesanan"
                 },
                 {
-                    data: "desc",
-                    name: "desc"
+                    data: "pakets.name",
+                    name: "pakets.name"
+                },
+                {
+                    data: "nama_lengkap",
+                    name: "nama_lengkap"
+                },
+                {
+                    data: "no_hp",
+                    name: "no_hp"
                 },
                 {
                     data: "created_at",

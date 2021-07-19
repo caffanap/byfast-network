@@ -47,5 +47,5 @@ Route::prefix('admin')->middleware('auth')->as('admin.')->group(function () {
     Route::resource('topping', 'Admin\ToppingController');
     
     
-    Route::get('pemesanan', 'PemesananController@index');
+    Route::resource('pemesanan', 'PemesananController');
 });
