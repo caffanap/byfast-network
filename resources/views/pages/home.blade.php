@@ -266,7 +266,7 @@ cover;" width="800" height="517">
 </section> --}}
 
 <!-- Our Pricing -->
-<section id="packet-container" class="content-inner-2"
+<section id="packet-container" class="content-inner-2 mb-5"
     style="background-image: url(assets/images/background/bg16.png); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
 </section>
@@ -316,82 +316,5 @@ cover;" width="800" height="517">
 </div> --}}
 
 <!-- Subscribe -->
-<div class="content-inner" id="PASANG_SEKARANG">
-    <div class="container">
-        <div class="section-head style-1 text-center">
-            <h6 class="sub-title text-primary m-b15">Berlangganan</h6>
-            <h2 class="title">Ayo Berlangganan!</h2>
-        </div>
-        <div class="row align-items-center">
-            <div class="col-xl-6 m-b30 wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0.2s">
-                <div class="dlab-media">
-                    <img src="{{asset('assets')}}/images/services/langganan.png" class="move-3" alt="">
-                </div>
-            </div>
-            <div class="col-xl-6 m-b30 wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.4s">
-                <form method="POST" action="{{ url('/subscriber/store') }}">
-                    {{ csrf_field() }}
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="input-group">
-                                <input name="nama_lengkap" required type="text" class="form-control"
-                                    placeholder="Nama Lengkap">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="input-group">
-                                <input name="nama_panggilan" type="text" class="form-control"
-                                    placeholder="Nama Panggilan">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="input-group">
-                                <input name="email" required type="email" class="form-control" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="input-group">
-                                <input name="no_telpon" required type="number" class="form-control"
-                                    placeholder="No Telpon">
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="input-group">
-                                <input name="umur_kehamilan" required type="number" class="form-control"
-                                    placeholder="Umur Kehamilan (Bulan)">
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="input-group">
-                                <label for="tertarik">Tertarik menggunakan Get Well Mom untuk</label>
-                                <select class="form-control" name="tertarik" id="tertarik">
-                                    <option>-- Pilih --</option>
-                                    <option value="Ingin konsultasi dan sharing tentang kehamilan dan pasca melahirkan">
-                                        Ingin konsultasi dan sharing tentang kehamilan dan pasca melahirkan</option>
-                                    <option value="Ingin mendapatkan seputar info kehamilan dan menyusui">Ingin
-                                        mendapatkan seputar info kehamilan dan menyusui</option>
-                                    <option
-                                        value="Ingin mendapatkan info produk relevan terkait kehamilan dan pasca melahirkan">
-                                        Ingin mendapatkan info produk relevan terkait kehamilan dan pasca melahirkan
-                                    </option>
-                                    <option value="Ingin mendapatkan informasi dokter dan rumah sakit terdekat">Ingin
-                                        mendapatkan informasi dokter dan rumah sakit terdekat</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="input-group">
-                                <textarea name="alamat" required class="form-control" placeholder="Alamat"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <button type="submit" class="btn btn-lg gradient btn-primary">Langganan Sekarang</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 <script src="{{ asset('services') }}/home.js"></script>
 @endsection

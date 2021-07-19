@@ -48,5 +48,5 @@ Route::prefix('admin')->middleware('auth')->as('admin.')->group(function () {
     Route::resource('about-us', 'Admin\AboutUsController')->only('index', 'store', 'edit');
     
     
-    Route::get('pemesanan', 'PemesananController@index');
+    Route::resource('pemesanan', 'PemesananController');
 });
