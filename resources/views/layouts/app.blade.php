@@ -132,7 +132,7 @@
                                 <ul>
                                     <li><a href="{{ url('/') }}">Home</a></li>
                                     <li><a href="{{ url('/about') }}">About</a></li>
-                                    <li><a href="{{ url('/services') }}">Service</a></li>
+                                    <li><a href="{{ url('/cek-status-pemesanan') }}">Cek Status Pemesanan</a></li>
                                 </ul>
                             </div>
                         </div>
