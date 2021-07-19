@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class AboutPageController extends Controller
 {
-    //
-    public function index(AboutUs $aboutUs)
+    public function index()
     {
-        return view('pages/about', ['about' => $aboutUs->first()]);
+        $aboutUs = AboutUs::first();
+        return view('pages/about', compact('aboutUs'));
     }
 }

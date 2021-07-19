@@ -1,5 +1,6 @@
 <?php
-// namespace Database\Seeders;
+
+namespace Database\Seeders;
 
 use App\AboutUs;
 use Illuminate\Database\Seeder;
@@ -14,11 +15,11 @@ class AboutUsSeeder extends Seeder
     public function run()
     {
         AboutUs::create([
-            'desc1' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis ullam debitis id. Odio qui, temporibus suscipit autem error inventore, commodi, accusamus nobis exercitationem animi neque perferendis cum assumenda tempora tenetur voluptas dicta doloremque ut quam possimus quisquam a labore? Minima, officiis cum non porro suscipit delectus omnis atque provident saepe.',
-            'desc2' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis ullam debitis id. Odio qui, temporibus suscipit autem error inventore, commodi, accusamus nobis exercitationem animi neque perferendis cum assumenda tempora tenetur voluptas dicta doloremque ut quam possimus quisquam a labore? Minima, officiis cum non porro suscipit delectus omnis atque provident saepe.',
-            'desc3' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis ullam debitis id. Odio qui, temporibus suscipit autem error inventore, commodi, accusamus nobis exercitationem animi neque perferendis cum assumenda tempora tenetur voluptas dicta doloremque ut quam possimus quisquam a labore? Minima, officiis cum non porro suscipit delectus omnis atque provident saepe.',
-            'desc4' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis ullam debitis id. Odio qui, temporibus suscipit autem error inventore, commodi, accusamus nobis exercitationem animi neque perferendis cum assumenda tempora tenetur voluptas dicta doloremque ut quam possimus quisquam a labore? Minima, officiis cum non porro suscipit delectus omnis atque provident saepe.',
-            'desc5' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis ullam debitis id. Odio qui, temporibus suscipit autem error inventore, commodi, accusamus nobis exercitationem animi neque perferendis cum assumenda tempora tenetur voluptas dicta doloremque ut quam possimus quisquam a labore? Minima, officiis cum non porro suscipit delectus omnis atque provident saepe.',
+            'desc1' => 'ByFast Net siap membantu bisnis digital Anda',
+            'desc2' => 'Solusi komunikasi maya yang selalu tersedia untuk anda. Karena kepuasan pelanggan adalah prioritas kami.',
+            'desc3' => 'Internet super cepat up to 1Gbps',
+            'desc4' => 'Telepon dan TV Kabel dengan lebih dari 1000 channel ',
+            'desc5' => 'Layanan cloud storage yang dapat diakses darimana saja',
         ]);
     }
 }

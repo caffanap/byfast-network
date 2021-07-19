@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomePageController@index')->name('home');
 Route::get('/about', 'AboutPageController@index')->name('about');
-Route::get('/layanan', 'ServicePageController@index')->name('layanan');
+// Route::get('/layanan', 'ServicePageController@index')->name('layanan');
 Route::get('/cek-status-pemesanan', 'CheckOrderStatusPageController@index')->name('cekStatusPemesanan');
 Route::get('/paket/{id}', 'PaketController@show');
 Route::get('/faq', 'FaqPageController@index');
@@ -42,11 +42,20 @@ Route::prefix('admin')->middleware('auth')->as('admin.')->group(function () {
     // Route::get('newsletter', 'Admin\NewsletterController@index');
 
     // kategori paket
+<<<<<<< HEAD
     Route::resource('kategori-paket', 'Admin\KategoriPaketController')->only('index', 'store', 'edit', 'destroy');
     Route::resource('paket', 'Admin\PaketController')->only('index', 'store', 'edit', 'destroy');
     Route::resource('topping', 'Admin\ToppingController')->only('index', 'store', 'edit', 'destroy');
     Route::resource('about', 'Admin\AboutUsController')->only('index', 'update');
     
     
+=======
+    Route::resource('kategori-paket', 'Admin\KategoriPaketController');
+    Route::resource('paket', 'Admin\PaketController');
+    Route::resource('topping', 'Admin\ToppingController');
+    Route::resource('about-us', 'Admin\AboutUsController')->only('index', 'store', 'edit');
+
+
+>>>>>>> b4b61d74c8a407356d136d078f2cff925908807f
     Route::resource('pemesanan', 'PemesananController');
 });
