@@ -22,7 +22,19 @@ class PemesananController extends Controller
 
     public function edit(Pemesanan $pemesanan, Request $request)
     {
-        return response()->json($pemesanan->with('pakets', 'topping_pakets')->find($request->id)->first());
+        return response()->json($pemesanan->with('pakets', 'topping_pakets')->where('id', $request->id)->first());
+    }
+
+    public function store(Request $request)
+    {
+        $id = $request->id;
+
+        $post = Pemesanan::updateOrCreate(['id' => $id],
+        [
+            'status_pemesanan'  =>  $request->status_pemesanan
+        ]);
+
+        return response()->json($post);
     }
     //
 }
