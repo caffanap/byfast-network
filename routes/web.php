@@ -42,10 +42,10 @@ Route::prefix('admin')->middleware('auth')->as('admin.')->group(function () {
     // Route::get('newsletter', 'Admin\NewsletterController@index');
 
     // kategori paket
-    Route::resource('kategori-paket', 'Admin\KategoriPaketController');
-    Route::resource('paket', 'Admin\PaketController');
-    Route::resource('topping', 'Admin\ToppingController');
-    Route::resource('about-us', 'Admin\AboutUsController')->only('index', 'store', 'edit');
+    Route::resource('kategori-paket', 'Admin\KategoriPaketController')->only('index', 'store', 'edit', 'destroy');
+    Route::resource('paket', 'Admin\PaketController')->only('index', 'store', 'edit', 'destroy');
+    Route::resource('topping', 'Admin\ToppingController')->only('index', 'store', 'edit', 'destroy');
+    Route::resource('about', 'Admin\AboutUsController')->only('index', 'update');
     
     
     Route::resource('pemesanan', 'PemesananController');

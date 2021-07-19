@@ -16,7 +16,7 @@ class AboutUsController extends Controller
     public function index()
     {
         $aboutUs = AboutUs::find(1);
-
+        // dd(compact('aboutUs'));
         return view('admin.aboutUs.index', compact('aboutUs'));
     }
 
@@ -71,7 +71,7 @@ class AboutUsController extends Controller
      */
     public function edit(AboutUs $aboutUs)
     {
-        return response()->json($aboutUs);
+        return view('admin.aboutUs.index', compact('aboutUs'));
     }
 
     /**
@@ -83,7 +83,20 @@ class AboutUsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->desc1);
+        
+        $aboutUs = AboutUs::find($id);
+
+        $aboutUs->update([
+            'desc1'  =>  $request->desc1,
+            'desc2'  =>  $request->desc2,
+            'desc3'  =>  $request->desc3,
+            'desc4'  =>  $request->desc4,
+            'desc5'  =>  $request->desc5,
+        ]);
+
+        return redirect()->route('admin.about.index');
+        
     }
 
     /**

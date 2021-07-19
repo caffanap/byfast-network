@@ -113,18 +113,18 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ url('admin/pemesanan') }}" class="nav-link">
+                        <li class=" nav-item">
+                            <a href="{{ route('admin.pemesanan.index') }}"
+                                class="{{ strpos(Route::currentRouteName(), 'admin.pemesanan') === 0 ? 'active-menu' : '' }} nav-link">
                                 <i class="nav-icon fas fa-shopping-cart"></i>
                                 <p>
-                                    Pemesanan
-                                    {{-- <span class="badge badge-info right">2</span> --}}
+                                Pemesanan
                                 </p>
                             </a>
                         </li>
                         <li class=" nav-item">
-                            <a href="{{ route('admin.about-us.index') }}"
-                                class="{{ strpos(Route::currentRouteName(), 'admin.about-us') === 0 ? 'active-menu' : '' }} nav-link">
+                            <a href="{{ route('admin.about.index') }}"
+                                class="{{ strpos(Route::currentRouteName(), 'admin.about') === 0 ? 'active-menu' : '' }} nav-link">
                                 <i class="nav-icon fas fa-plus-square"></i>
                                 <p>
                                     About Us

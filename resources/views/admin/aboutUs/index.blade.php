@@ -6,12 +6,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Kategori Paket</h1>
+                <h1>About Us</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{route('admin.kategori-paket.index')}}">Home</a></li>
-                    <li class="breadcrumb-item active">Kategori Paket</li>
+                    <li class="breadcrumb-item"><a href="{{route('admin.about.index')}}">Home</a></li>
+                    <li class="breadcrumb-item active">About Us</li>
                 </ol>
             </div>
         </div>
@@ -33,16 +33,33 @@
                             <input type="hidden" name="id" id="id">
 
                             <div class="form-group">
-                                <label for="name" class="col-sm-12 control-label">Nama</label>
+                                <label for="name" class="col-sm-12 control-label">Deskripsi 1</label>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" id="name" name="name" value="" required>
+                                    <textarea class="form-control" name="desc1" id="desc1" required></textarea>
                                 </div>
                             </div>
-
                             <div class="form-group">
-                                <label for="name" class="col-sm-12 control-label">Deskripsi</label>
+                                <label for="name" class="col-sm-12 control-label">Deskripsi 2</label>
                                 <div class="col-sm-12">
-                                    <textarea class="form-control" name="desc" id="desc" required></textarea>
+                                    <textarea class="form-control" name="desc2" id="desc2" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-12 control-label">Deskripsi 3</label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control" name="desc3" id="desc3" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-12 control-label">Deskripsi 4</label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control" name="desc4" id="desc4" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-12 control-label">Deskripsi 5</label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control" name="desc5" id="desc5" required></textarea>
                                 </div>
                             </div>
 
@@ -92,11 +109,51 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Data Kategori Paket</h3>
+                        <h3 class="card-title">Data About Us</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive">
-                        
+                        <form class="form-horizontal" action="{{route('admin.about.update', $aboutUs->id)}}" method="POST">
+                            @method('PUT')
+                            @csrf
+                                    <div class="form-group">
+                                        <label for="name" class="col-sm-12 control-label">Deskripsi 1</label>
+                                        <div class="col-sm-12">
+                                            <textarea class="form-control" name="desc1" id="desc1" required>{{$aboutUs->desc1}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name" class="col-sm-12 control-label">Deskripsi 2</label>
+                                        <div class="col-sm-12">
+                                            <textarea class="form-control" name="desc2" id="desc2" required>{{$aboutUs->desc2}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name" class="col-sm-12 control-label">Deskripsi 3</label>
+                                        <div class="col-sm-12">
+                                            <textarea class="form-control" name="desc3" id="desc3" required>{{$aboutUs->desc3}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name" class="col-sm-12 control-label">Deskripsi 4</label>
+                                        <div class="col-sm-12">
+                                            <textarea class="form-control" name="desc4" id="desc4" required>{{$aboutUs->desc4}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name" class="col-sm-12 control-label">Deskripsi 5</label>
+                                        <div class="col-sm-12">
+                                            <textarea class="form-control" name="desc5" id="desc5" required>{{$aboutUs->desc5}}</textarea>
+                                        </div>
+                                    </div>
+
+
+                                <div class="col-sm-offset-2 col-sm-12">
+                                    <button type="submit" class="btn btn-primary btn-block" id="tombol-simpan" value="create">Simpan
+                                    </button>
+                                </div>
+
+                        </form>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -111,155 +168,5 @@
 @endsection
 
 @section('script')
-<!-- jquery validated -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" integrity="sha256-sPB0F50YUDK0otDnsfNHawYmA5M0pjjUf4TvRJkGFrI=" crossorigin="anonymous"></script>
-
-<!-- iziToast -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.js" integrity="sha256-siqh9650JHbYFKyZeTEAhq+3jvkFCG8Iz+MHdr9eKrw=" crossorigin="anonymous"></script>
-
-
-<script>
-    // csrf token
-    $(document).ready(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    });
-
-    // button tambah
-    $('#tombol-tambah').click(function() {
-        $('#button-simpan').val("create-post");
-        $('#id').val('');
-        $('#form-tambah-edit').trigger("reset");
-        $('#modal-judul').html("Tambah Kategori Paket");
-        $('#tambah-edit-modal').modal('show');
-    })
-
-    // form tambah
-    if ($("#form-tambah-edit").length > 0) {
-        $("#form-tambah-edit").validate({
-            submitHandler: function(form) {
-                var actionType = $('#tombol-simpan').val();
-                $('#tombol-simpan').html('Sending..');
-                $.ajax({
-                    data: $('#form-tambah-edit').serialize(),
-                    url: "{{ route('admin.kategori-paket.store') }}",
-                    type: "POST",
-                    dataType: 'json',
-                    success: function(data) {
-                        $('#form-tambah-edit').trigger("reset");
-                        $('#tambah-edit-modal').modal('hide');
-                        $('#tombol-simpan').html('Simpan');
-                        var oTable = $('#example1').dataTable();
-                        oTable.fnDraw(false);
-                        iziToast.success({
-                            title: 'Data Berhasil Disimpan',
-                            position: 'bottomRight'
-                        });
-                    },
-                    error: function(data) {
-                        console.log('Error:', data);
-                        $('#tombol-simpan').html('Simpan');
-                    }
-                });
-            }
-        })
-    }
-
-    // data edit
-    $(document).on('click', '.edit-post', function() {
-        var data_id = $(this).data('id');
-        $.get('kategori-paket/' + data_id + '/edit', function(data) {
-            $('#modal-judul').html("Edit Kategori Paket");
-            $('#tombol-simpan').val("edit-post");
-            $('#tambah-edit-modal').modal('show');
-            //set value                
-            $('#id').val(data.id);
-            $('#name').val(data.name);
-            $('#desc').val(data.desc);
-        })
-    });
-
-    //delete
-    $(document).on('click', '.delete', function() {
-        dataId = $(this).attr('id');
-        $('#konfirmasi-modal').modal('show');
-    });
-    
-    $('#tombol-hapus').click(function() {
-        $.ajax({
-            url: "kategori-paket/" + dataId, 
-            type: 'delete',
-            beforeSend: function() {
-                $('#tombol-hapus').text('Hapus Data'); 
-            },
-            success: function(data) { 
-                setTimeout(function() {
-                    $('#konfirmasi-modal').modal('hide'); 
-                    var oTable = $('#example1').dataTable();
-                    oTable.fnDraw(false); 
-                });
-                iziToast.warning({ 
-                    title: 'Data Berhasil Dihapus',
-                    position: 'bottomRight'
-                });
-            }
-        })
-    });
-
-
-    // datatables
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            // buttons: ["copy", "excel", "pdf"],
-
-            processing: true,
-            serverSide: true,
-            ajax: {
-                url: "{{route('admin.kategori-paket.index')}}",
-                type: 'GET',
-            },
-            columns: [{
-                    data: "id",
-                    name: "id"
-                },
-                {
-                    data: "name",
-                    name: "name"
-                },
-                {
-                    data: "desc",
-                    name: "desc"
-                },
-                {
-                    data: "created_at",
-                    name: "created_at",
-                    render: (data) => {
-                        return new Date(data).toISOString().slice(0, 19).replace('T', ' ')
-                    }
-                },
-                {
-                    data: "updated_at",
-                    name: "updated_at",
-                    render: (data) => {
-                        return new Date(data).toISOString().slice(0, 19).replace('T', ' ')
-                    }
-                },
-                {
-                    data: "action",
-                    name: "action"
-                },
-            ],
-            order: [
-                [0, 'asc']
-            ]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
-</script>
 
 @endsection
