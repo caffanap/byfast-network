@@ -116,7 +116,7 @@
                         <!-- Extra Nav -->
                         <div class="extra-nav">
                             <div class="extra-cell">
-                                <a href="#packet-container" class="btn btn-primary gradient rounded-xl">Berlangganan</a>
+                                <a href="{{ url('/#packet-container') }}" class="btn btn-primary gradient rounded-xl">Berlangganan</a>
                             </div>
                         </div>
                         <div class="header-nav navbar-collapse collapse justify-content-end" id="navbarNavDropdown">

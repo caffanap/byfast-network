@@ -36,13 +36,12 @@
                     <div class="icon-bx-wraper style-6 text-center m-b30 icon-up">
                         <div class="icon-bx-lg radius bg-white">
                             <a href="javascript:void(0);" class="icon-cell text-primary">
-                                <i class="flaticon-sketch"></i>
+                                <i class="flaticon-vector"></i>
                             </a>
                         </div>
                         <div class="icon-content">
-                            <h4 class="dlab-title m-b15">Isi Data Diri</h4>
-                            <p>Silahkan Pilih layanan yang Bunda Kehendaki
-                            </p>
+                            <h4 class="dlab-title m-b15">Pilih Paket</h4>
+                            <p>Tentukan paket pilihan yang sesuai untukmu</p>
                         </div>
                     </div>
                 </div>
@@ -50,12 +49,13 @@
                     <div class="icon-bx-wraper style-6 text-center m-b30 icon-up">
                         <div class="icon-bx-lg radius bg-white">
                             <a href="javascript:void(0);" class="icon-cell text-primary">
-                                <i class="flaticon-vector"></i>
+                                <i class="flaticon-sketch"></i>
                             </a>
                         </div>
                         <div class="icon-content">
-                            <h4 class="dlab-title m-b15">Klik Coba Sekarang</h4>
-                            <p>Kami akan membantu Bunda dengan sepenuh Hati</p>
+                            <h4 class="dlab-title m-b15">Isi Formulir Pemesanan</h4>
+                            <p>Isi formulir untuk mengajukan pemesanan layanan internet.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -67,8 +67,8 @@
                             </a>
                         </div>
                         <div class="icon-content">
-                            <h4 class="dlab-title m-b15">Nikmati Fitur Konsultasi dan Informasi Online Kami</h4>
-                            <p>Menunggu Persalinan Anda dengan Seksama</p>
+                            <h4 class="dlab-title m-b15">Nikmati Layanan Internet Cepat ByFast</h4>
+                            <p>Layanan internet akan dapat anda nikmati setelah pemesanan dikonfirmasi admin</p>
                         </div>
                     </div>
                 </div>
@@ -82,23 +82,21 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 m-b30 wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0.2s">
                     <div class="dz-media left">
-                        <img src="{{ asset('assets') }}/images/about/pic1.jpg" alt="">
+                        <img src="{{ asset('assets') }}/images/about/flat.png" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 m-b30 wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.4s">
                     <div class="section-head style-1">
                         <h6 class="sub-title text-primary m-b15">About Us</h6>
-                        <h2 class="title m-b20" style="font-size: 40px">Get Well Mom menghadirkan solusi kesehatan dalam
-                            genggaman.</h2>
-                        <p>Temukan segala bentuk pelayanan kesehatan untuk Ibu Hamil dan menyusui , meliputi :</p>
+                        <h2 class="title m-b20" style="font-size: 40px">{{ $aboutUs->desc1 }}</h2>
+                        <p>{{ $aboutUs->desc2 }}</p>
                     </div>
                     <ul class="list-check primary m-b30">
-                        <li>Konsultasi dokter kandungan online</li>
-                        <li>Direktori dokter dan rumah sakit</li>
-                        <li>Pengetahuan perihal Ibu Hamil dan Menyusui</li>
-                        <li>Perlengkapan Ibu Hamil dan Menyusui</li>
+                        <li>{{ $aboutUs->desc3 }}</li>
+                        <li>{{ $aboutUs->desc4 }}</li>
+                        <li>{{ $aboutUs->desc5 }}</li>
                     </ul>
-                    <a href="{{ url('/#COBA_SEKARANG') }}" class="btn btn-primary rounded-xl gradient">Berlangganan</a>
+                    <a href="{{ url('/#packet-container') }}" class="btn btn-primary rounded-xl gradient">Berlangganan</a>
                 </div>
             </div>
         </div>
