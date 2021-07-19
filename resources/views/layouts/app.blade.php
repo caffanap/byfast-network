@@ -27,6 +27,10 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/vendor/swiper/css/swiper.min.css">
     <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
         .label-container {
             position: fixed;
             bottom: 48px;
@@ -112,7 +116,7 @@
                         <!-- Extra Nav -->
                         <div class="extra-nav">
                             <div class="extra-cell">
-                                <a href="/#COBA_SEKARANG" class="btn btn-primary gradient rounded-xl">Berlangganan</a>
+                                <a href="#packet-container" class="btn btn-primary gradient rounded-xl">Berlangganan</a>
                             </div>
                         </div>
                         <div class="header-nav navbar-collapse collapse justify-content-end" id="navbarNavDropdown">
