@@ -5,6 +5,7 @@ use Database\Seeders\AdminSeeder;
 use Database\Seeders\KategoriPaketSeeder;
 use Database\Seeders\PaketSeeder;
 use Database\Seeders\ToppingPaketSeeder;
+// use Database\Seeders\AboutUsSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
             KategoriPaketSeeder::class,
             PaketSeeder::class,
             ToppingPaketSeeder::class,
+            AboutUsSeeder::class,
         ]);
     }
 }
