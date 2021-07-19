@@ -1,9 +1,14 @@
 $(document).ready(function (){
   const id = window.location.pathname.slice(-1)[0];
   const modalFooter = $('#modal-footer');
-  $.get(`${apiUrl}/get-paket/${id}`, (data) => {
+  $.get(`${apiUrl}/get-paket/${id}`, async (data) => {
     onSuccess(data);
-    setOptions(data);
+    await setOptions(data);
+    setTimeout(() => {
+      if ($('select').length) {
+        $('select').selectpicker();
+      }
+    }, 1000);
   }).fail((error) => {
     alert('Terjadi kesalahan, reload halaman ini!')
   });
@@ -30,6 +35,7 @@ $(document).ready(function (){
       toppingOptions += option(item, selected)
     });
     selectTopping.html(toppingOptions);
+    return true;
   };
   
   const row = ({ name, desc, harga }, index) => (`

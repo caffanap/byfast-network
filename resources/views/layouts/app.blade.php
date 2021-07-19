@@ -32,6 +32,7 @@
     </style>
 
     <script src="{{ asset('assets') }}/js/jquery.min.js"></script>
+    <script src="{{ asset('assets') }}/vendor/bootstrap-select/bootstrap-select.min.js"></script>
     <script>
         var baseUrl = window.location.origin;
         var apiUrl = `${baseUrl}/api`;
@@ -192,7 +193,6 @@
     <!-- MASONRY -->
     <script src="{{ asset('assets') }}/vendor/lightgallery/js/lightgallery-all.min.js"></script>
     <!-- LIGHTGALLERY -->
-    <script src="{{ asset('assets') }}/vendor/bootstrap-select/bootstrap-select.min.js"></script>
     <!-- BOOTSTRAP SELECT -->
     <script src="{{ asset('assets') }}/vendor/imagesloaded/imagesloaded.js"></script>
     <!-- IMAGESLOADED -->

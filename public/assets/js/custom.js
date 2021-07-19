@@ -450,7 +450,7 @@ var Samar = function(){
 	var handleBootstrapSelect = function(){
 		/* Bootstrap Select box function by  = bootstrap-select.min.js */ 
 		if (jQuery('select').length) {
-		    jQuery('select').selectpicker();
+		    // jQuery('select').selectpicker();
 		}
 		/* Bootstrap Select box function by  = bootstrap-select.min.js end*/
 	}
