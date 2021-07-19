@@ -195,19 +195,24 @@
                     var nama = $('#nama_lengkap_view').html()
                     var no_telpon = $('#no_hp_view').html()
                     var no_telp_wa = no_telpon.replace("0", "62")
-                    if (data.status_pemesanan == 'proses') {
-                        var text_wa = "Halo " + nama + ".\nNomor Pemesanan : " + nomor_pemesanan +
-                            "\nPemesanan anda telah kami konfirmasi dan kami akan segera mengirimkan tim untuk melakukan pemasangan.\n\nSalam Hangat, Admin Byfast Network"
-                        window.open('https://wa.me/' + no_telp_wa + '?text=' + encodeURI(text_wa),
-                            '_blank');
-                            console.log("open wa");
-                    } else if (data.status_pemesanan == 'done') {
-                        var text_wa = "Halo " + nama + ".\nNomor Pemesanan : " + nomor_pemesanan +
-                            "\nPemesanan anda telah terpasang silakan nikmati layanan dari kami :).\n\nSalam Hangat, Admin Byfast Network"
-                        window.open('https://wa.me/' + no_telp_wa + '?text=' + encodeURI(text_wa),
-                            '_blank');
-                            console.log("open wa");
-                    }
+                    setTimeout(function() {
+                        if (data.status_pemesanan == 'proses') {
+                            var text_wa = "Halo " + nama + ".\nNomor Pemesanan : " +
+                                nomor_pemesanan +
+                                "\nPemesanan anda telah kami konfirmasi dan kami akan segera mengirimkan tim untuk melakukan pemasangan.\n\nSalam Hangat, Admin Byfast Network"
+                            window.open('https://wa.me/' + no_telp_wa + '?text=' + encodeURI(
+                                    text_wa),
+                                '_blank');
+                        } else if (data.status_pemesanan == 'done') {
+                            var text_wa = "Halo " + nama + ".\nNomor Pemesanan : " +
+                                nomor_pemesanan +
+                                "\nPemesanan anda telah terpasang silakan nikmati layanan dari kami :).\n\nSalam Hangat, Admin Byfast Network"
+                            window.open('https://wa.me/' + no_telp_wa + '?text=' + encodeURI(
+                                    text_wa),
+                                '_blank');
+                        }
+                    }, 3000);
+
                 },
                 error: function(data) {
                     iziToast.error({
